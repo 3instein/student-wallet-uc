@@ -1,20 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package main;
 
-/**
- *
- * @author micha
- */
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.*;
+
 public class auth extends javax.swing.JFrame {
-
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form auth
      */
     public auth() {
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
     }
 
     /**
@@ -56,6 +60,11 @@ public class auth extends javax.swing.JFrame {
         login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -116,6 +125,15 @@ public class auth extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        sql = "SELECT user_id, username, password, status FROM user WHERE username='"+ username.getText() + "' AND password='" + password.getText() + "';";
+        try{
+            rs = stmt.executeQuery(sql);
+        } catch(Exception e) {
+            
+        }
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
