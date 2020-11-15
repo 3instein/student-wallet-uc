@@ -127,11 +127,21 @@ public class auth extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        sql = "SELECT user_id, username, password, status FROM user WHERE username='"+ username.getText() + "' AND password='" + password.getText() + "';";
+        sql = "SELECT user_id, username, password, status FROM user WHERE username='"+ username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
         try{
             rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                int status = rs.getInt("status");
+                if (status == 1){
+                    int user_id = rs.getInt("user_id");
+                } else if(status == 0){
+                    JOptionPane.showMessageDialog(null, "Account is not active!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Wrong username or password!");
+            }
         } catch(Exception e) {
-            
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_loginActionPerformed
 
