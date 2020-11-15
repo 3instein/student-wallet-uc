@@ -107,6 +107,7 @@ public class MainMenu extends javax.swing.JFrame {
         balance.setText("Balance");
         balance.setBorder(javax.swing.BorderFactory.createLineBorder(kGradientPanel1.getkEndColor()));
         balance.setBorderPainted(false);
+        balance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         balance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 balanceActionPerformed(evt);
@@ -119,6 +120,7 @@ public class MainMenu extends javax.swing.JFrame {
         transfer.setText("Transfer");
         transfer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         transfer.setBorderPainted(false);
+        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         payment_notif.setBackground(kGradientPanel1.getkEndColor());
         payment_notif.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -126,6 +128,7 @@ public class MainMenu extends javax.swing.JFrame {
         payment_notif.setText("Payment Notification");
         payment_notif.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         payment_notif.setBorderPainted(false);
+        payment_notif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         history.setBackground(kGradientPanel1.getkEndColor());
         history.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -133,6 +136,7 @@ public class MainMenu extends javax.swing.JFrame {
         history.setText("Transaction History");
         history.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         history.setBorderPainted(false);
+        history.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         deposit.setBackground(kGradientPanel1.getkEndColor());
         deposit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -140,6 +144,7 @@ public class MainMenu extends javax.swing.JFrame {
         deposit.setText("Deposit");
         deposit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         deposit.setBorderPainted(false);
+        deposit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         withdraw.setBackground(kGradientPanel1.getkEndColor());
         withdraw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -147,6 +152,7 @@ public class MainMenu extends javax.swing.JFrame {
         withdraw.setText("Withdraw");
         withdraw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         withdraw.setBorderPainted(false);
+        withdraw.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,6 +203,7 @@ public class MainMenu extends javax.swing.JFrame {
         logout.setText("Logout");
         logout.setBorder(new javax.swing.border.LineBorder(kGradientPanel1.getkStartColor(), 2, true));
         logout.setBorderPainted(false);
+        logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);

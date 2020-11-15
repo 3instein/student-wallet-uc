@@ -40,6 +40,7 @@ public class auth extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Welcome to Student Wallet UC");
         setMinimumSize(new java.awt.Dimension(643, 463));
         getContentPane().setLayout(null);
 
@@ -60,6 +61,7 @@ public class auth extends javax.swing.JFrame {
         login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
