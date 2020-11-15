@@ -45,7 +45,7 @@ public class balance extends javax.swing.JFrame {
                 formatRp.setMonetaryDecimalSeparator(',');
                 formatRp.setGroupingSeparator('.');
                 
-                float balance = rs.getFloat("balance");
+                int balance = rs.getInt("balance");
                 
                 rp.setDecimalFormatSymbols(formatRp);
                 balance_content.setText(rp.format(balance));
