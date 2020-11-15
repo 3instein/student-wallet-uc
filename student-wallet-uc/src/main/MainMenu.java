@@ -5,13 +5,15 @@
  */
 package main;
 
+import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 /**
  *
  * @author micha
@@ -20,12 +22,32 @@ public class MainMenu extends javax.swing.JFrame {
     Timer updateTimer;
     int DELAY = 100;
     int user_id;
+    String name;
+    
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu(int user_id, String name) {
+    public MainMenu(int user_id) {
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
         this.user_id = user_id;
+        sql = "SELECT full_name FROM user WHERE user_id=" + user_id + ";";
+        
+        try{
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                name = rs.getString("full_name");
+            }
+        } catch(Exception e){
+            
+        }
         
         updateTimer = new Timer(DELAY, new ActionListener() {
             @Override
@@ -261,7 +283,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceActionPerformed
-        
+        new balance(user_id).setVisible(true);
+        dispose();
     }//GEN-LAST:event_balanceActionPerformed
 
     /**

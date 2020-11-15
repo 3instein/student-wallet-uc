@@ -5,17 +5,54 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author micha
  */
 public class balance extends javax.swing.JFrame {
-
+    int user_id;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form balance
      */
-    public balance() {
+    public balance(int user_id) {
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
+        this.user_id = user_id;
+        sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
+        try{
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                DecimalFormatSymbols formatRp =  new DecimalFormatSymbols();
+                
+                formatRp.setCurrencySymbol("Rp. ");
+                formatRp.setMonetaryDecimalSeparator(',');
+                formatRp.setGroupingSeparator('.');
+                
+                float balance = rs.getFloat("balance");
+                
+                rp.setDecimalFormatSymbols(formatRp);
+                balance_content.setText(rp.format(balance));
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     /**
@@ -36,6 +73,7 @@ public class balance extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Balance");
+        setMinimumSize(new java.awt.Dimension(640, 517));
         getContentPane().setLayout(null);
 
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
@@ -81,6 +119,11 @@ public class balance extends javax.swing.JFrame {
         back_balance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         back_balance.setContentAreaFilled(false);
         back_balance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back_balance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back_balanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,7 +132,7 @@ public class balance extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(back_balance)
-                .addContainerGap(542, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,6 +151,11 @@ public class balance extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed
+        new MainMenu(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_back_balanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +187,7 @@ public class balance extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new balance().setVisible(true);
+                
             }
         });
     }
