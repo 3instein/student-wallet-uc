@@ -46,7 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
                 name = rs.getString("full_name");
             }
         } catch(Exception e){
-            
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
         
         updateTimer = new Timer(DELAY, new ActionListener() {
