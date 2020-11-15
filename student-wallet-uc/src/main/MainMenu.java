@@ -5,17 +5,40 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 /**
  *
  * @author micha
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    Timer updateTimer;
+    int DELAY = 100;
+    int user_id;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu(int user_id, String name) {
         initComponents();
+        this.user_id = user_id;
+        
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "dd MMMM yyyy hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String StrDate = formatTime.format(currentTime);
+                clock.setText(StrDate);
+            }
+        });
+        updateTimer.start();
+        welcome.setText("Welcome " + name);
     }
 
     /**
@@ -34,7 +57,7 @@ public class MainMenu extends javax.swing.JFrame {
         payment_notif = new javax.swing.JButton();
         history = new javax.swing.JButton();
         deposit = new javax.swing.JButton();
-        Withdraw = new javax.swing.JButton();
+        withdraw = new javax.swing.JButton();
         welcome = new javax.swing.JLabel();
         clock = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
@@ -62,6 +85,11 @@ public class MainMenu extends javax.swing.JFrame {
         balance.setText("Balance");
         balance.setBorder(javax.swing.BorderFactory.createLineBorder(kGradientPanel1.getkEndColor()));
         balance.setBorderPainted(false);
+        balance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                balanceActionPerformed(evt);
+            }
+        });
 
         transfer.setBackground(kGradientPanel1.getkEndColor());
         transfer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -91,12 +119,12 @@ public class MainMenu extends javax.swing.JFrame {
         deposit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         deposit.setBorderPainted(false);
 
-        Withdraw.setBackground(kGradientPanel1.getkEndColor());
-        Withdraw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Withdraw.setForeground(new java.awt.Color(255, 255, 255));
-        Withdraw.setText("Withdraw");
-        Withdraw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Withdraw.setBorderPainted(false);
+        withdraw.setBackground(kGradientPanel1.getkEndColor());
+        withdraw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        withdraw.setForeground(new java.awt.Color(255, 255, 255));
+        withdraw.setText("Withdraw");
+        withdraw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        withdraw.setBorderPainted(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,7 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(payment_notif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                     .addComponent(history, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
@@ -121,7 +149,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +163,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         welcome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         welcome.setForeground(new java.awt.Color(255, 255, 255));
-        welcome.setText("Welcome ");
+        welcome.setText("0");
 
         clock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         clock.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,6 +175,11 @@ public class MainMenu extends javax.swing.JFrame {
         logout.setText("Logout");
         logout.setBorder(new javax.swing.border.LineBorder(kGradientPanel1.getkStartColor(), 2, true));
         logout.setBorderPainted(false);
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -155,12 +188,13 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addComponent(welcome)
-                        .addGap(414, 414, 414)
-                        .addComponent(clock))
                     .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                            .addComponent(welcome)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clock))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
@@ -173,7 +207,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -221,6 +255,15 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        new auth().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logoutActionPerformed
+
+    private void balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceActionPerformed
+        
+    }//GEN-LAST:event_balanceActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,13 +294,12 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Withdraw;
     private javax.swing.JButton balance;
     private javax.swing.JLabel clock;
     private javax.swing.JButton deposit;
@@ -272,5 +314,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton payment_notif;
     private javax.swing.JButton transfer;
     private javax.swing.JLabel welcome;
+    private javax.swing.JButton withdraw;
     // End of variables declaration//GEN-END:variables
 }

@@ -56,13 +56,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="welcome" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="414" max="-2" attributes="0"/>
-                          <Component id="clock" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="logout" alignment="1" min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="welcome" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="clock" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
@@ -79,7 +81,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="logout" pref="23" max="32767" attributes="0"/>
+                  <Component id="logout" pref="26" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -118,7 +120,7 @@
                       </Group>
                       <EmptySpace pref="108" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Withdraw" alignment="1" max="32767" attributes="0"/>
+                          <Component id="withdraw" alignment="1" max="32767" attributes="0"/>
                           <Component id="payment_notif" alignment="1" pref="170" max="32767" attributes="0"/>
                           <Component id="history" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -132,7 +134,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="deposit" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="Withdraw" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="withdraw" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -171,6 +173,9 @@
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="balanceActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="transfer">
               <Properties>
@@ -252,7 +257,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="Withdraw">
+            <Component class="javax.swing.JButton" name="withdraw">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection component="kGradientPanel1" name="kEndColor" type="property"/>
@@ -282,7 +287,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Welcome "/>
+            <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="clock">
@@ -317,6 +322,9 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
