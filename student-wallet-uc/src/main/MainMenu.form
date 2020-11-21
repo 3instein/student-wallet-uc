@@ -271,6 +271,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="withdraw">
               <Properties>
@@ -294,6 +297,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="withdrawActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

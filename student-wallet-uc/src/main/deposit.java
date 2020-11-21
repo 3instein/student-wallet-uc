@@ -5,17 +5,32 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 /**
  *
  * @author micha
  */
 public class deposit extends javax.swing.JFrame {
-
+    int user_id;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form deposit
      */
-    public deposit() {
+    public deposit(int user_id) {
+        this.user_id = user_id;
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
     }
 
     /**
@@ -51,6 +66,11 @@ public class deposit extends javax.swing.JFrame {
         back.setText("Back");
         back.setBorderPainted(false);
         back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,6 +138,11 @@ public class deposit extends javax.swing.JFrame {
         deposit_req.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         deposit_req.setText("Deposit");
         deposit_req.setBorderPainted(false);
+        deposit_req.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deposit_reqActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -156,7 +181,7 @@ public class deposit extends javax.swing.JFrame {
         );
 
         getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(10, 60, 465, 250);
+        kGradientPanel1.setBounds(10, 60, 453, 250);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/bg5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -164,6 +189,41 @@ public class deposit extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new MainMenu(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void deposit_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deposit_reqActionPerformed
+        int amount = Integer.valueOf(deposit.getText());
+        if(amount < 10000){
+            JOptionPane.showMessageDialog(this, "Minimum deposit amount is Rp.10.000");
+        } else if(amount >= 10000){
+            try{
+                int balance = 0;
+                sql = "SELECT balance FROM user where user_id=" + user_id + ";";
+                rs = stmt.executeQuery(sql);
+                if(rs.next()){
+                    balance = rs.getInt("balance");
+                }
+                balance = balance + amount;
+                sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                stmt.execute(sql);
+                DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                DecimalFormatSymbols formatRp =  new DecimalFormatSymbols();
+                
+                formatRp.setCurrencySymbol("Rp. ");
+                formatRp.setMonetaryDecimalSeparator(',');
+                formatRp.setGroupingSeparator('.');
+                rp.setDecimalFormatSymbols(formatRp);
+                JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
+                deposit.setText("");
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }        
+    }//GEN-LAST:event_deposit_reqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,7 +255,7 @@ public class deposit extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new deposit().setVisible(true);
+                
             }
         });
     }

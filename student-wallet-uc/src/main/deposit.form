@@ -76,6 +76,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -231,6 +234,9 @@
             <Property name="text" type="java.lang.String" value="Deposit"/>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deposit_reqActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

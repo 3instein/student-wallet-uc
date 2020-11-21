@@ -5,17 +5,53 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 /**
  *
  * @author micha
  */
 public class withdraw extends javax.swing.JFrame {
-
+    int user_id;
+    int balance = 0;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
+    
+    
     /**
      * Creates new form withdraw
      */
-    public withdraw() {
+    public withdraw(int user_id) {
         initComponents();
+        this.user_id = user_id;
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
+        try{
+            sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                balance = rs.getInt("balance");
+                DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                DecimalFormatSymbols formatRp =  new DecimalFormatSymbols();
+                
+                formatRp.setCurrencySymbol("Rp. ");
+                formatRp.setMonetaryDecimalSeparator(',');
+                formatRp.setGroupingSeparator('.');
+                rp.setDecimalFormatSymbols(formatRp);
+                
+                withdrawal.setText(rp.format(balance));
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     /**
@@ -28,6 +64,7 @@ public class withdraw extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
+        back = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         withdrawal = new javax.swing.JLabel();
@@ -38,7 +75,6 @@ public class withdraw extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,13 +85,23 @@ public class withdraw extends javax.swing.JFrame {
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
         kGradientPanel1.setkStartColor(new java.awt.Color(58, 28, 113));
 
+        back.setBackground(new java.awt.Color(255, 255, 255));
+        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        back.setText("Back");
+        back.setBorderPainted(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Available for Withdrawal");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Rp. ");
 
         withdrawal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         withdrawal.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,6 +127,11 @@ public class withdraw extends javax.swing.JFrame {
         request.setText("Withdraw");
         request.setBorder(null);
         request.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -111,46 +162,37 @@ public class withdraw extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        back.setBackground(new java.awt.Color(255, 255, 255));
-        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        back.setText("Back");
-        back.setBorderPainted(false);
-        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2))
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(4, 4, 4)
+                                    .addComponent(insert_withdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
                         .addComponent(jLabel3)
-                        .addGap(6, 6, 6)
-                        .addComponent(withdrawal))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel4))
-                    .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(4, 4, 4)
-                                .addComponent(insert_withdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(withdrawal)
+                        .addGap(446, 446, 446))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(back)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(122, 122, 122))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +215,9 @@ public class withdraw extends javax.swing.JFrame {
                 .addComponent(request, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(back)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
         );
 
         getContentPane().add(kGradientPanel1);
@@ -191,6 +233,40 @@ public class withdraw extends javax.swing.JFrame {
     private void insert_withdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert_withdrawalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_insert_withdrawalActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new MainMenu(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
+        int amount = Integer.valueOf(insert_withdrawal.getText());
+        if (amount < 10000){
+            JOptionPane.showMessageDialog(this, "Minimum withdraw amount is Rp.10.000");
+        } else if(amount >= 10000){
+            if(amount < balance - 100000){
+                try{
+                    balance = balance - amount;
+                    sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                    stmt.execute(sql);
+                    insert_withdrawal.setText("");
+                    DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                    DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                    formatRp.setCurrencySymbol("Rp. ");
+                    formatRp.setMonetaryDecimalSeparator(',');
+                    formatRp.setGroupingSeparator('.');
+                    rp.setDecimalFormatSymbols(formatRp);
+                    JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
+                    withdrawal.setText(rp.format(balance));
+                } catch(Exception e){
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+            }
+        }
+    }//GEN-LAST:event_requestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +298,7 @@ public class withdraw extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new withdraw().setVisible(true);
+                
             }
         });
     }

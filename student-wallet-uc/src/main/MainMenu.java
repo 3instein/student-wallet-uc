@@ -145,6 +145,11 @@ public class MainMenu extends javax.swing.JFrame {
         deposit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         deposit.setBorderPainted(false);
         deposit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositActionPerformed(evt);
+            }
+        });
 
         withdraw.setBackground(kGradientPanel1.getkEndColor());
         withdraw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -153,6 +158,11 @@ public class MainMenu extends javax.swing.JFrame {
         withdraw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         withdraw.setBorderPainted(false);
         withdraw.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        withdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -293,6 +303,16 @@ public class MainMenu extends javax.swing.JFrame {
         new balance(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_balanceActionPerformed
+
+    private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
+        new deposit(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_depositActionPerformed
+
+    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
+        new withdraw(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_withdrawActionPerformed
 
     /**
      * @param args the command line arguments
