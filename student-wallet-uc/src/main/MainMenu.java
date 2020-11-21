@@ -121,6 +121,11 @@ public class MainMenu extends javax.swing.JFrame {
         transfer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         transfer.setBorderPainted(false);
         transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferActionPerformed(evt);
+            }
+        });
 
         payment_notif.setBackground(kGradientPanel1.getkEndColor());
         payment_notif.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -313,6 +318,11 @@ public class MainMenu extends javax.swing.JFrame {
         new withdraw(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_withdrawActionPerformed
+
+    private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
+        new transfer(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_transferActionPerformed
 
     /**
      * @param args the command line arguments

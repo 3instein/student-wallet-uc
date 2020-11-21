@@ -4,18 +4,54 @@
  * and open the template in the editor.
  */
 package main;
-
+    import java.sql.Connection;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
+    import java.text.DecimalFormat;
+    import java.text.DecimalFormatSymbols;
+    import javax.swing.*;
 /**
  *
  * @author micha
  */
 public class transfer extends javax.swing.JFrame {
-
+    int user_id;
+    int balance = 0;
+    int transaction_id;
+    String target;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
+    String sql_target;
     /**
      * Creates new form transfer
      */
-    public transfer() {
+    public transfer(int user_id) {
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
+        this.user_id = user_id;
+        try{
+            sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                balance = rs.getInt("balance");
+                DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                DecimalFormatSymbols formatRp =  new DecimalFormatSymbols();
+                
+                formatRp.setCurrencySymbol("Rp. ");
+                formatRp.setMonetaryDecimalSeparator(',');
+                formatRp.setGroupingSeparator('.');
+                rp.setDecimalFormatSymbols(formatRp);
+                
+                transfer_balance.setText(rp.format(balance));
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     /**
@@ -54,6 +90,11 @@ public class transfer extends javax.swing.JFrame {
         jButton1.setText("Back");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,7 +121,7 @@ public class transfer extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Username/Student ID");
+        jLabel2.setText("Student  ID");
 
         transfer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -96,6 +137,11 @@ public class transfer extends javax.swing.JFrame {
         transfer_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         transfer_button.setText("Transfer");
         transfer_button.setBorderPainted(false);
+        transfer_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transfer_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,18 +184,17 @@ public class transfer extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
                             .addComponent(transfer_button)
-                            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(transfer_amount)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(transfer, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jLabel2)
+                            .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(transfer_amount))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,6 +228,78 @@ public class transfer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new MainMenu(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void transfer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transfer_buttonActionPerformed
+        int amount = Integer.valueOf(transfer_amount.getText());
+        try{
+            if(transfer.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Student ID cannot be empty!");
+                return;
+            } else {
+                target = transfer.getText();
+            }                    
+            if(amount > 10000){
+                if (amount < balance - 100000){
+                    sql = "SELECT balance, user_id FROM user WHERE nim=" + target + ";";
+                    rs = stmt.executeQuery(sql);
+                    balance = balance - amount;
+                    if(rs.next()){
+                        int balance_target = rs.getInt("balance");
+                        int user_id_target = rs.getInt("user_id");
+                        if(user_id_target == user_id){
+                            JOptionPane.showMessageDialog(this, "You cannot transfer to yourself!");
+                            transfer.setText("");
+                            transfer_amount.setText("");
+                            return;
+                        }
+                        balance_target = balance_target + amount;
+                        sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                        sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim=" + target + ";";
+                        stmt.execute(sql);
+                        stmt.execute(sql_target);
+                        DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                        DecimalFormatSymbols formatRp =  new DecimalFormatSymbols();
+
+                        formatRp.setCurrencySymbol("Rp. ");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        rp.setDecimalFormatSymbols(formatRp);
+                        transfer_balance.setText(rp.format(balance));
+                        transfer.setText("");
+                        transfer_amount.setText("");
+                        
+                        java.util.Date date=java.util.Calendar.getInstance().getTime();
+                        sql = "INSERT INTO history (user_id, type, amount, date) VALUE("+ user_id +", 'Outgoing Transfer', " + amount + ", '" + date + "');";
+                        sql_target = "INSERT INTO history (user_id, type, amount, date) VALUE("+ user_id_target +", 'Incoming Transfer', " + amount + ", '" + date + "');";
+                        stmt.execute(sql);
+                        stmt.execute(sql_target);
+                        sql = "SELECT transaction_id FROM history WHERE user_id=" + user_id + ";";
+                        rs = stmt.executeQuery(sql);
+                        if(rs.next()){
+                            transaction_id = rs.getInt("transaction_id");
+                        }
+                        JOptionPane.showMessageDialog(this, "Transfer Successful! Transaction ID: #" + transaction_id + "\n" + target + "\n" + rp.format(amount) + "\n" + date);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Student ID not found!");
+                        transfer.setText("");
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+                    transfer_amount.setText("");
+                }
+            } else if(amount < 10000){
+                JOptionPane.showMessageDialog(this, "Minimum transfer amount is Rp. 10.000");
+                transfer_amount.setText("");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_transfer_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -213,7 +330,7 @@ public class transfer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new transfer().setVisible(true);
+                
             }
         });
     }

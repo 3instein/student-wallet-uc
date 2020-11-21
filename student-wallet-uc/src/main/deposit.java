@@ -219,6 +219,9 @@ public class deposit extends javax.swing.JFrame {
                 rp.setDecimalFormatSymbols(formatRp);
                 JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
                 deposit.setText("");
+                java.util.Date date=java.util.Calendar.getInstance().getTime();
+                sql = "INSERT INTO history (user_id, type, amount, date) VALUE("+ user_id +", 'Deposit', " + amount + ", '" + date + "');";
+                stmt.execute(sql);
             } catch(Exception e){
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
