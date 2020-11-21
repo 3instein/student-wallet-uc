@@ -36,19 +36,20 @@ public class deposit extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        back1 = new javax.swing.JButton();
         deposit_request = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(506, 410));
+        setMinimumSize(new java.awt.Dimension(506, 360));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        back.setBackground(new java.awt.Color(255, 255, 255));
         back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         back.setText("Back");
         back.setBorderPainted(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,15 +113,12 @@ public class deposit extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        back1.setBackground(new java.awt.Color(255, 255, 255));
-        back1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        back1.setText("Back");
-        back1.setBorderPainted(false);
-
         deposit_request.setBackground(new java.awt.Color(255, 255, 255));
         deposit_request.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        deposit_request.setText("Send a Request");
+        deposit_request.setText("Deposit");
         deposit_request.setBorder(null);
+        deposit_request.setContentAreaFilled(false);
+        deposit_request.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deposit_request.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deposit_requestActionPerformed(evt);
@@ -132,21 +130,15 @@ public class deposit extends javax.swing.JFrame {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(deposit))
-                            .addComponent(jLabel2)
-                            .addComponent(deposit_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(back1)))
-                .addContainerGap())
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deposit))
+                    .addComponent(jLabel2)
+                    .addComponent(deposit_request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,20 +154,18 @@ public class deposit extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(deposit_request, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(deposit_request, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(back1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(10, 60, 465, 300);
+        kGradientPanel1.setBounds(10, 60, 465, 250);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/bg5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 490, 370);
+        jLabel1.setBounds(0, 0, 490, 320);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,7 +211,6 @@ public class deposit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton back1;
     private javax.swing.JTextField deposit;
     private javax.swing.JToggleButton deposit_request;
     private javax.swing.JLabel jLabel1;

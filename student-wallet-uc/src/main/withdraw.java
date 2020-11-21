@@ -77,8 +77,9 @@ public class withdraw extends javax.swing.JFrame {
 
         request.setBackground(new java.awt.Color(255, 255, 255));
         request.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        request.setText("Send a Request");
+        request.setText("Withdraw");
         request.setBorder(null);
+        request.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,6 +114,7 @@ public class withdraw extends javax.swing.JFrame {
         back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         back.setText("Back");
         back.setBorderPainted(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
@@ -167,8 +169,8 @@ public class withdraw extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(insert_withdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(request, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(request, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(back)
