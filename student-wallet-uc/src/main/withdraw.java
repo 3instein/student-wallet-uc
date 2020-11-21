@@ -42,6 +42,7 @@ public class withdraw extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Withdraw");
         setMinimumSize(new java.awt.Dimension(510, 427));
         getContentPane().setLayout(null);
 
@@ -50,7 +51,7 @@ public class withdraw extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Availabel for Withdrawal");
+        jLabel2.setText("Available for Withdrawal");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
