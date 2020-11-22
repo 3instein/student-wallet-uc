@@ -76,7 +76,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         balance = new javax.swing.JButton();
         transfer = new javax.swing.JButton();
-        payment_notif = new javax.swing.JButton();
+        finance = new javax.swing.JButton();
         history = new javax.swing.JButton();
         deposit = new javax.swing.JButton();
         withdraw = new javax.swing.JButton();
@@ -127,13 +127,18 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        payment_notif.setBackground(kGradientPanel1.getkEndColor());
-        payment_notif.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        payment_notif.setForeground(new java.awt.Color(255, 255, 255));
-        payment_notif.setText("Payment Notification");
-        payment_notif.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        payment_notif.setBorderPainted(false);
-        payment_notif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finance.setBackground(kGradientPanel1.getkEndColor());
+        finance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        finance.setForeground(new java.awt.Color(255, 255, 255));
+        finance.setText("Finance");
+        finance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        finance.setBorderPainted(false);
+        finance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                financeActionPerformed(evt);
+            }
+        });
 
         history.setBackground(kGradientPanel1.getkEndColor());
         history.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -142,6 +147,11 @@ public class MainMenu extends javax.swing.JFrame {
         history.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         history.setBorderPainted(false);
         history.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        history.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyActionPerformed(evt);
+            }
+        });
 
         deposit.setBackground(kGradientPanel1.getkEndColor());
         deposit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -182,7 +192,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(payment_notif, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(finance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                     .addComponent(history, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
@@ -196,7 +206,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(payment_notif, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,6 +334,16 @@ public class MainMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_transferActionPerformed
 
+    private void historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyActionPerformed
+        new history(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_historyActionPerformed
+
+    private void financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_financeActionPerformed
+        new finance(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_financeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +383,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton balance;
     private javax.swing.JLabel clock;
     private javax.swing.JButton deposit;
+    private javax.swing.JButton finance;
     private javax.swing.JButton history;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -371,7 +392,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JButton logout;
-    private javax.swing.JButton payment_notif;
     private javax.swing.JButton transfer;
     private javax.swing.JLabel welcome;
     private javax.swing.JButton withdraw;

@@ -142,7 +142,7 @@ public class auth extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Account is not active!");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Wrong username or password!");
+                JOptionPane.showMessageDialog(null, "Wrong username or password.\n Please contact the Admin if you forget your username or password!");
             }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

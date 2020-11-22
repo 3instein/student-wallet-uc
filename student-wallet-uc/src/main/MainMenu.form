@@ -121,7 +121,7 @@
                       <EmptySpace pref="108" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="withdraw" alignment="1" max="32767" attributes="0"/>
-                          <Component id="payment_notif" alignment="1" pref="170" max="32767" attributes="0"/>
+                          <Component id="finance" alignment="1" pref="170" max="32767" attributes="0"/>
                           <Component id="history" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -139,7 +139,7 @@
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="transfer" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="payment_notif" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="finance" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -206,7 +206,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transferActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="payment_notif">
+            <Component class="javax.swing.JButton" name="finance">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection component="kGradientPanel1" name="kEndColor" type="property"/>
@@ -217,7 +217,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Payment Notification"/>
+                <Property name="text" type="java.lang.String" value="Finance"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
@@ -228,6 +228,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="financeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="history">
               <Properties>
@@ -251,6 +254,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historyActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="deposit">
               <Properties>
