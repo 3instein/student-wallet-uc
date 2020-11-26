@@ -79,8 +79,8 @@ public class transfer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Transfer");
-        setMaximumSize(new java.awt.Dimension(656, 457));
-        setMinimumSize(new java.awt.Dimension(418, 457));
+        setMaximumSize(new java.awt.Dimension(586, 457));
+        setMinimumSize(new java.awt.Dimension(586, 457));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,7 +103,7 @@ public class transfer extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jButton1)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(515, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +114,7 @@ public class transfer extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 400, 70);
+        jPanel1.setBounds(0, 0, 600, 70);
 
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
         kGradientPanel1.setkStartColor(new java.awt.Color(58, 28, 113));
@@ -182,19 +182,17 @@ public class transfer extends javax.swing.JFrame {
                         .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(transfer_balance)
                             .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(404, Short.MAX_VALUE))
                     .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(transfer_button)
                             .addComponent(jLabel2)
-                            .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(transfer_amount))
+                            .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(transfer_amount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                .addComponent(transfer, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,17 +211,17 @@ public class transfer extends javax.swing.JFrame {
                 .addComponent(transfer_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(transfer_button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(10, 80, 380, 320);
+        kGradientPanel1.setBounds(10, 80, 570, 320);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/bg5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 417);
+        jLabel1.setBounds(0, 0, 600, 440);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

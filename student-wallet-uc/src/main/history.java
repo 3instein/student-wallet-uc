@@ -80,16 +80,74 @@ public class history extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        display = new javax.swing.JTable();
         previous = new javax.swing.JButton();
         next = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        display = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Transcantion History");
 
         kGradientPanel1.setLayout(null);
+
+        previous.setBackground(new java.awt.Color(255, 255, 255));
+        previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        previous.setText("Previous Page");
+        previous.setBorderPainted(false);
+        previous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(previous);
+        previous.setBounds(110, 330, 120, 23);
+
+        next.setBackground(new java.awt.Color(255, 255, 255));
+        next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        next.setText("Next Page");
+        next.setBorderPainted(false);
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(next);
+        next.setBounds(570, 330, 119, 23);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        back.setBackground(new java.awt.Color(255, 255, 255));
+        back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        back.setText("Back");
+        back.setBorderPainted(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(back)
+                .addContainerGap(719, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(back)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        kGradientPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 790, 50);
 
         display.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,67 +159,10 @@ public class history extends javax.swing.JFrame {
         )
         {public boolean isCellEditable(int row, int column){return false;}}
     );
-    jScrollPane2.setViewportView(display);
+    jScrollPane3.setViewportView(display);
 
-    kGradientPanel1.add(jScrollPane2);
-    jScrollPane2.setBounds(20, 70, 749, 112);
-
-    previous.setBackground(new java.awt.Color(255, 255, 255));
-    previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    previous.setText("Previous Page");
-    previous.setBorderPainted(false);
-    previous.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            previousActionPerformed(evt);
-        }
-    });
-    kGradientPanel1.add(previous);
-    previous.setBounds(110, 210, 120, 23);
-
-    next.setBackground(new java.awt.Color(255, 255, 255));
-    next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    next.setText("Next Page");
-    next.setBorderPainted(false);
-    next.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            nextActionPerformed(evt);
-        }
-    });
-    kGradientPanel1.add(next);
-    next.setBounds(560, 210, 119, 23);
-
-    jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-    back.setBackground(new java.awt.Color(255, 255, 255));
-    back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    back.setText("Back");
-    back.setBorderPainted(false);
-    back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    back.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            backActionPerformed(evt);
-        }
-    });
-
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(back)
-            .addContainerGap(719, Short.MAX_VALUE))
-    );
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(back)
-            .addContainerGap(16, Short.MAX_VALUE))
-    );
-
-    kGradientPanel1.add(jPanel2);
-    jPanel2.setBounds(0, 0, 790, 50);
+    kGradientPanel1.add(jScrollPane3);
+    jScrollPane3.setBounds(20, 70, 749, 230);
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -169,13 +170,13 @@ public class history extends javax.swing.JFrame {
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
-            .addContainerGap())
+            .addGap(0, 0, 0))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 96, Short.MAX_VALUE))
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,12 +184,14 @@ public class history extends javax.swing.JFrame {
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, 0))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
 
     pack();
@@ -324,7 +327,7 @@ public class history extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JButton next;
     private javax.swing.JButton previous;
