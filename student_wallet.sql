@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 08:43 AM
+-- Generation Time: Nov 26, 2020 at 02:07 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -51,7 +51,8 @@ INSERT INTO `history` (`transaction_id`, `user_id`, `type`, `amount`, `date`) VA
 (9, 1, 'Deposit', 1000000, 'Sun Nov 22 10:18:07 WIB 2020'),
 (10, 1, 'Deposit', 3000000, 'Sun Nov 22 10:18:10 WIB 2020'),
 (11, 1, 'Deposit', 6000000, 'Sun Nov 22 10:18:14 WIB 2020'),
-(12, 1, 'Withdraw', 10000000, 'Sun Nov 22 10:18:25 WIB 2020');
+(12, 1, 'Withdraw', 10000000, 'Sun Nov 22 10:18:25 WIB 2020'),
+(13, 1, 'Deposit', 20000, 'Mon Nov 23 14:47:05 WIB 2020');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `nim`, `username`, `password`, `balance`, `full_name`, `status`) VALUES
-(1, '0706012010011', 'rkindarto', 'root', 5000000, 'Reynaldi Kindarto', 1),
+(1, '0706012010011', 'rkindarto', 'root', 5020000, 'Reynaldi Kindarto', 1),
 (2, '0706012010021', 'eco123', '12345', 10100000, 'Michael Eco', 1);
 
 --
@@ -132,7 +133,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payment`
