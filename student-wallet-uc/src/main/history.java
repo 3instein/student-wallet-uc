@@ -48,7 +48,7 @@ public class history extends javax.swing.JFrame {
 
         rp.setDecimalFormatSymbols(formatRp);
         
-        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY date DESC LIMIT 5;";
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5;";
         try{
             rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -205,14 +205,14 @@ public class history extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "This is the first page!");
             return;
         } else {
-            for(int i = 4; i >= 0; i--){
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
             model.removeRow(i);
             }
             page--;
         }
         offset = page * 5;
         
-        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY date DESC LIMIT 5 OFFSET " + offset + ";";
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5 OFFSET " + offset + ";";
         try{
             DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
             DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -244,14 +244,14 @@ public class history extends javax.swing.JFrame {
 
         
         try{
-            sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY date DESC LIMIT 5 OFFSET " + offset + ";";
+            sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5 OFFSET " + offset + ";";
             rs = stmt.executeQuery(sql);
             if(!rs.next()){
                 JOptionPane.showMessageDialog(this, "This is the last page!");
                 page--;
                 return;
             } else {
-                for(int i = 4; i >= 0; i--){
+                for(int i = display.getRowCount() - 1; i >= 0; i--){
                     model.removeRow(i);
                 }
             }
