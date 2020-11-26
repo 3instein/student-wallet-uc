@@ -72,89 +72,53 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
-        jPanel2 = new javax.swing.JPanel();
-        balance = new javax.swing.JButton();
-        transfer = new javax.swing.JButton();
-        finance = new javax.swing.JButton();
-        history = new javax.swing.JButton();
-        deposit = new javax.swing.JButton();
-        withdraw = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         welcome = new javax.swing.JLabel();
         clock = new javax.swing.JLabel();
+        deposit = new javax.swing.JButton();
+        transfer = new javax.swing.JButton();
+        balance = new javax.swing.JButton();
+        withdraw = new javax.swing.JButton();
+        finance = new javax.swing.JButton();
+        history = new javax.swing.JButton();
         logout = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
-        setMaximumSize(new java.awt.Dimension(643, 559));
-        setMinimumSize(new java.awt.Dimension(643, 559));
+        setMaximumSize(new java.awt.Dimension(32767, 32767));
+        setMinimumSize(new java.awt.Dimension(746, 592));
         setPreferredSize(new java.awt.Dimension(643, 559));
         getContentPane().setLayout(null);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
-        kGradientPanel1.setkStartColor(new java.awt.Color(58, 28, 113));
+        jPanel1.setBackground(new java.awt.Color(251, 211, 176));
 
-        jPanel2.setBackground(kGradientPanel1.getkStartColor());
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "Main Menu", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(244, 129, 30));
 
-        balance.setBackground(kGradientPanel1.getkEndColor());
-        balance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        balance.setForeground(new java.awt.Color(255, 255, 255));
-        balance.setText("Balance");
-        balance.setBorder(javax.swing.BorderFactory.createLineBorder(kGradientPanel1.getkEndColor()));
-        balance.setBorderPainted(false);
-        balance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        balance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                balanceActionPerformed(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Ciputra_logo.png"))); // NOI18N
 
-        transfer.setBackground(kGradientPanel1.getkEndColor());
-        transfer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        transfer.setForeground(new java.awt.Color(255, 255, 255));
-        transfer.setText("Transfer");
-        transfer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        transfer.setBorderPainted(false);
-        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        transfer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transferActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+        );
 
-        finance.setBackground(kGradientPanel1.getkEndColor());
-        finance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        finance.setForeground(new java.awt.Color(255, 255, 255));
-        finance.setText("Finance");
-        finance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        finance.setBorderPainted(false);
-        finance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        finance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                financeActionPerformed(evt);
-            }
-        });
+        welcome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        welcome.setText("0");
 
-        history.setBackground(kGradientPanel1.getkEndColor());
-        history.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        history.setForeground(new java.awt.Color(255, 255, 255));
-        history.setText("Transaction History");
-        history.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        history.setBorderPainted(false);
-        history.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        history.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyActionPerformed(evt);
-            }
-        });
+        clock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        clock.setText("0");
 
-        deposit.setBackground(kGradientPanel1.getkEndColor());
-        deposit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        deposit.setBackground(new java.awt.Color(64, 191, 64));
+        deposit.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
         deposit.setForeground(new java.awt.Color(255, 255, 255));
         deposit.setText("Deposit");
         deposit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -166,8 +130,33 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        withdraw.setBackground(kGradientPanel1.getkEndColor());
-        withdraw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        transfer.setBackground(new java.awt.Color(64, 191, 64));
+        transfer.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        transfer.setForeground(new java.awt.Color(255, 255, 255));
+        transfer.setText("Transfer");
+        transfer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        transfer.setBorderPainted(false);
+        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferActionPerformed(evt);
+            }
+        });
+
+        balance.setBackground(new java.awt.Color(64, 191, 64));
+        balance.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        balance.setForeground(new java.awt.Color(255, 255, 255));
+        balance.setText("Balance");
+        balance.setBorderPainted(false);
+        balance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        balance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                balanceActionPerformed(evt);
+            }
+        });
+
+        withdraw.setBackground(new java.awt.Color(64, 191, 64));
+        withdraw.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
         withdraw.setForeground(new java.awt.Color(255, 255, 255));
         withdraw.setText("Withdraw");
         withdraw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -179,54 +168,36 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(finance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(history, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        finance.setBackground(new java.awt.Color(64, 191, 64));
+        finance.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        finance.setForeground(new java.awt.Color(255, 255, 255));
+        finance.setText("Finance");
+        finance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        finance.setBorderPainted(false);
+        finance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                financeActionPerformed(evt);
+            }
+        });
 
-        welcome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        welcome.setForeground(new java.awt.Color(255, 255, 255));
-        welcome.setText("0");
+        history.setBackground(new java.awt.Color(64, 191, 64));
+        history.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        history.setForeground(new java.awt.Color(255, 255, 255));
+        history.setText("Transaction History");
+        history.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        history.setBorderPainted(false);
+        history.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        history.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyActionPerformed(evt);
+            }
+        });
 
-        clock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        clock.setForeground(new java.awt.Color(255, 255, 255));
-        clock.setText("0");
-
-        logout.setBackground(kGradientPanel1.getkStartColor());
-        logout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        logout.setBackground(new java.awt.Color(64, 191, 64));
+        logout.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
         logout.setText("Logout");
-        logout.setBorder(new javax.swing.border.LineBorder(kGradientPanel1.getkStartColor(), 2, true));
         logout.setBorderPainted(false);
         logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout.addActionListener(new java.awt.event.ActionListener() {
@@ -235,76 +206,69 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                            .addComponent(welcome)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(clock))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(welcome)
-                    .addComponent(clock))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-        );
-
-        getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(20, 120, 590, 380);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/logo uc.png"))); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setText("Student Wallet");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(welcome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(clock)
+                .addGap(30, 30, 30))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(160, 160, 160)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(finance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(finance, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(146, 146, 146))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel3)))
-                .addGap(10, 10, 10))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(welcome)
+                            .addComponent(clock))
+                        .addContainerGap())))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 630, 104);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/bg5.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 100, 626, 417);
+        jPanel1.setBounds(0, 0, 730, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -386,11 +350,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton finance;
     private javax.swing.JButton history;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton logout;
     private javax.swing.JButton transfer;
     private javax.swing.JLabel welcome;
