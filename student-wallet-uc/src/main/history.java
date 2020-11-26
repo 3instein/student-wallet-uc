@@ -77,35 +77,19 @@ public class history extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        next = new javax.swing.JButton();
-        previous = new javax.swing.JButton();
-        back = new javax.swing.JButton();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         display = new javax.swing.JTable();
+        previous = new javax.swing.JButton();
+        next = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        next.setText("Next Page");
-        next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
-            }
-        });
-
-        previous.setText("Previous Page");
-        previous.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousActionPerformed(evt);
-            }
-        });
-
-        back.setText("Back");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
+        kGradientPanel1.setLayout(null);
 
         display.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,37 +103,79 @@ public class history extends javax.swing.JFrame {
     );
     jScrollPane2.setViewportView(display);
 
+    kGradientPanel1.add(jScrollPane2);
+    jScrollPane2.setBounds(20, 70, 749, 112);
+
+    previous.setBackground(new java.awt.Color(255, 255, 255));
+    previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    previous.setText("Previous Page");
+    previous.setBorderPainted(false);
+    previous.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            previousActionPerformed(evt);
+        }
+    });
+    kGradientPanel1.add(previous);
+    previous.setBounds(110, 210, 120, 23);
+
+    next.setBackground(new java.awt.Color(255, 255, 255));
+    next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    next.setText("Next Page");
+    next.setBorderPainted(false);
+    next.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            nextActionPerformed(evt);
+        }
+    });
+    kGradientPanel1.add(next);
+    next.setBounds(560, 210, 119, 23);
+
+    jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+    back.setBackground(new java.awt.Color(255, 255, 255));
+    back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    back.setText("Back");
+    back.setBorderPainted(false);
+    back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    back.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            backActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(back)
+            .addContainerGap(719, Short.MAX_VALUE))
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(back)
+            .addContainerGap(16, Short.MAX_VALUE))
+    );
+
+    kGradientPanel1.add(jPanel2);
+    jPanel2.setBounds(0, 0, 790, 50);
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(153, 153, 153)
-            .addComponent(previous)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(220, 220, 220))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(back)
-            .addGap(31, 31, 31))
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(101, 101, 101)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(120, Short.MAX_VALUE))
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
+            .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap(97, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(180, 180, 180)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(next)
-                .addComponent(previous))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-            .addComponent(back)
-            .addGap(26, 26, 26))
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 96, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,8 +321,11 @@ public class history extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JTable display;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private keeptoo.KGradientPanel kGradientPanel1;
     private javax.swing.JButton next;
     private javax.swing.JButton previous;
     // End of variables declaration//GEN-END:variables
