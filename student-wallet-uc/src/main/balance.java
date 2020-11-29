@@ -62,58 +62,24 @@ public class balance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
-        jLabel = new javax.swing.JLabel();
-        balance_content = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         back_balance = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel = new javax.swing.JLabel();
+        balance_content = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Balance");
-        setMinimumSize(new java.awt.Dimension(640, 517));
+        setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
-        kGradientPanel1.setkStartColor(new java.awt.Color(58, 28, 113));
-
-        jLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel.setText("Balance");
-
-        balance_content.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        balance_content.setForeground(new java.awt.Color(255, 255, 255));
-        balance_content.setText("0");
-
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(balance_content)
-                    .addComponent(jLabel))
-                .addContainerGap(387, Short.MAX_VALUE))
-        );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel)
-                .addGap(30, 30, 30)
-                .addComponent(balance_content)
-                .addContainerGap(227, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(30, 80, 570, 370);
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(787, 60));
+        jPanel1.setPreferredSize(new java.awt.Dimension(787, 60));
 
         back_balance.setBackground(new java.awt.Color(255, 255, 255));
         back_balance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        back_balance.setText("<-- Back");
+        back_balance.setText("<- Back");
         back_balance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         back_balance.setContentAreaFilled(false);
         back_balance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -130,7 +96,7 @@ public class balance extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(back_balance)
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(705, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +107,44 @@ public class balance extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 630, 60);
+        jPanel1.setBounds(0, 0, 770, 60);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/bg5.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 60, 626, 417);
+        jPanel2.setBackground(new java.awt.Color(251, 211, 176));
+        jPanel2.setMinimumSize(new java.awt.Dimension(787, 320));
+        jPanel2.setPreferredSize(new java.awt.Dimension(787, 320));
+
+        jLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel.setText("Balance");
+
+        balance_content.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        balance_content.setText("0");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(balance_content)))
+                .addContainerGap(614, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel)
+                .addGap(20, 20, 20)
+                .addComponent(balance_content)
+                .addContainerGap(227, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 60, 770, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,8 +193,7 @@ public class balance extends javax.swing.JFrame {
     private javax.swing.JButton back_balance;
     private javax.swing.JLabel balance_content;
     private javax.swing.JLabel jLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
