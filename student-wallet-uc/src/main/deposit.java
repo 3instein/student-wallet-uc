@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -148,6 +149,11 @@ public class deposit extends javax.swing.JFrame {
         jLabel3.setText("Rp.");
 
         deposit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        deposit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                depositKeyPressed(evt);
+            }
+        });
 
         deposit_req.setBackground(new java.awt.Color(64, 191, 64));
         deposit_req.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -241,6 +247,41 @@ public class deposit extends javax.swing.JFrame {
             }
         }        
     }//GEN-LAST:event_deposit_reqActionPerformed
+
+    private void depositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_depositKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int amount = Integer.valueOf(deposit.getText());
+            if (amount < 10000) {
+                JOptionPane.showMessageDialog(this, "Minimum deposit amount is Rp.10.000");
+            } else if (amount >= 10000) {
+                try {
+                    int balance = 0;
+                    sql = "SELECT balance FROM user where user_id=" + user_id + ";";
+                    rs = stmt.executeQuery(sql);
+                    if (rs.next()) {
+                        balance = rs.getInt("balance");
+                    }
+                    balance = balance + amount;
+                    sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                    stmt.execute(sql);
+                    DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                    DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                    formatRp.setCurrencySymbol("Rp. ");
+                    formatRp.setMonetaryDecimalSeparator(',');
+                    formatRp.setGroupingSeparator('.');
+                    rp.setDecimalFormatSymbols(formatRp);
+                    JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
+                    deposit.setText("");
+                    java.util.Date date = java.util.Calendar.getInstance().getTime();
+                    sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Deposit', " + amount + ", '" + date + "');";
+                    stmt.execute(sql);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_depositKeyPressed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -130,6 +131,11 @@ public class withdraw extends javax.swing.JFrame {
         insert_withdrawal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insert_withdrawalActionPerformed(evt);
+            }
+        });
+        insert_withdrawal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                insert_withdrawalKeyPressed(evt);
             }
         });
 
@@ -263,6 +269,40 @@ public class withdraw extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_requestActionPerformed
+
+    private void insert_withdrawalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_insert_withdrawalKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int amount = Integer.valueOf(insert_withdrawal.getText());
+            if (amount < 10000) {
+                JOptionPane.showMessageDialog(this, "Minimum withdraw amount is Rp.10.000");
+            } else if (amount >= 10000) {
+                if (amount < balance - 100000) {
+                    try {
+                        balance = balance - amount;
+                        sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                        stmt.execute(sql);
+                        insert_withdrawal.setText("");
+                        DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                        formatRp.setCurrencySymbol("Rp. ");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+                        rp.setDecimalFormatSymbols(formatRp);
+                        JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
+                        withdrawal.setText(rp.format(balance));
+                        java.util.Date date = java.util.Calendar.getInstance().getTime();
+                        sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Withdraw', " + amount + ", '" + date + "');";
+                        stmt.execute(sql);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this, e.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+                }
+            }
+        }
+    }//GEN-LAST:event_insert_withdrawalKeyPressed
 
     /**
      * @param args the command line arguments

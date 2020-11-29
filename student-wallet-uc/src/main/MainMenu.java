@@ -8,6 +8,7 @@ package main;
 import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -288,25 +289,25 @@ public class MainMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_depositActionPerformed
 
-    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
-        new withdraw(user_id).setVisible(true);
-        dispose();
-    }//GEN-LAST:event_withdrawActionPerformed
-
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
         new transfer(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_transferActionPerformed
 
-    private void historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyActionPerformed
-        new history(user_id).setVisible(true);
+    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
+        new withdraw(user_id).setVisible(true);
         dispose();
-    }//GEN-LAST:event_historyActionPerformed
+    }//GEN-LAST:event_withdrawActionPerformed
 
     private void financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_financeActionPerformed
         new finance(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_financeActionPerformed
+
+    private void historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyActionPerformed
+        new history(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_historyActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package main;
+import java.awt.event.KeyEvent;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
@@ -127,11 +128,21 @@ public class transfer extends javax.swing.JFrame {
         jLabel2.setText("Student  ID");
 
         transfer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        transfer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                transferKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Amount");
 
         transfer_amount.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        transfer_amount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                transfer_amountKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -284,6 +295,144 @@ public class transfer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_transfer_buttonActionPerformed
+
+    private void transferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_transferKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int amount = Integer.valueOf(transfer_amount.getText());
+            try {
+                if (transfer.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Student ID cannot be empty!");
+                    return;
+                } else {
+                    target = transfer.getText();
+                }
+                if (amount > 10000) {
+                    if (amount < balance - 100000) {
+                        sql = "SELECT balance, user_id FROM user WHERE nim=" + target + ";";
+                        rs = stmt.executeQuery(sql);
+                        balance = balance - amount;
+                        if (rs.next()) {
+                            int balance_target = rs.getInt("balance");
+                            int user_id_target = rs.getInt("user_id");
+                            if (user_id_target == user_id) {
+                                JOptionPane.showMessageDialog(this, "You cannot transfer to yourself!");
+                                transfer.setText("");
+                                transfer_amount.setText("");
+                                return;
+                            }
+                            balance_target = balance_target + amount;
+                            sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim=" + target + ";";
+                            stmt.execute(sql);
+                            stmt.execute(sql_target);
+                            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                            formatRp.setCurrencySymbol("Rp. ");
+                            formatRp.setMonetaryDecimalSeparator(',');
+                            formatRp.setGroupingSeparator('.');
+                            rp.setDecimalFormatSymbols(formatRp);
+                            transfer_balance.setText(rp.format(balance));
+                            transfer.setText("");
+                            transfer_amount.setText("");
+
+                            java.util.Date date = java.util.Calendar.getInstance().getTime();
+                            sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Outgoing Transfer', " + amount + ", '" + date + "');";
+                            sql_target = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id_target + ", 'Incoming Transfer', " + amount + ", '" + date + "');";
+                            stmt.execute(sql);
+                            stmt.execute(sql_target);
+                            sql = "SELECT transaction_id FROM history WHERE user_id=" + user_id + ";";
+                            rs = stmt.executeQuery(sql);
+                            if (rs.next()) {
+                                transaction_id = rs.getInt("transaction_id");
+                            }
+                            JOptionPane.showMessageDialog(this, "Transfer Successful! Transaction ID: #" + transaction_id + "\n" + target + "\n" + rp.format(amount) + "\n" + date);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Student ID not found!");
+                            transfer.setText("");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+                        transfer_amount.setText("");
+                    }
+                } else if (amount < 10000) {
+                    JOptionPane.showMessageDialog(this, "Minimum transfer amount is Rp. 10.000");
+                    transfer_amount.setText("");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_transferKeyPressed
+
+    private void transfer_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_transfer_amountKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int amount = Integer.valueOf(transfer_amount.getText());
+            try {
+                if (transfer.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Student ID cannot be empty!");
+                    return;
+                } else {
+                    target = transfer.getText();
+                }
+                if (amount > 10000) {
+                    if (amount < balance - 100000) {
+                        sql = "SELECT balance, user_id FROM user WHERE nim=" + target + ";";
+                        rs = stmt.executeQuery(sql);
+                        balance = balance - amount;
+                        if (rs.next()) {
+                            int balance_target = rs.getInt("balance");
+                            int user_id_target = rs.getInt("user_id");
+                            if (user_id_target == user_id) {
+                                JOptionPane.showMessageDialog(this, "You cannot transfer to yourself!");
+                                transfer.setText("");
+                                transfer_amount.setText("");
+                                return;
+                            }
+                            balance_target = balance_target + amount;
+                            sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim=" + target + ";";
+                            stmt.execute(sql);
+                            stmt.execute(sql_target);
+                            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                            formatRp.setCurrencySymbol("Rp. ");
+                            formatRp.setMonetaryDecimalSeparator(',');
+                            formatRp.setGroupingSeparator('.');
+                            rp.setDecimalFormatSymbols(formatRp);
+                            transfer_balance.setText(rp.format(balance));
+                            transfer.setText("");
+                            transfer_amount.setText("");
+
+                            java.util.Date date = java.util.Calendar.getInstance().getTime();
+                            sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Outgoing Transfer', " + amount + ", '" + date + "');";
+                            sql_target = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id_target + ", 'Incoming Transfer', " + amount + ", '" + date + "');";
+                            stmt.execute(sql);
+                            stmt.execute(sql_target);
+                            sql = "SELECT transaction_id FROM history WHERE user_id=" + user_id + ";";
+                            rs = stmt.executeQuery(sql);
+                            if (rs.next()) {
+                                transaction_id = rs.getInt("transaction_id");
+                            }
+                            JOptionPane.showMessageDialog(this, "Transfer Successful! Transaction ID: #" + transaction_id + "\n" + target + "\n" + rp.format(amount) + "\n" + date);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Student ID not found!");
+                            transfer.setText("");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+                        transfer_amount.setText("");
+                    }
+                } else if (amount < 10000) {
+                    JOptionPane.showMessageDialog(this, "Minimum transfer amount is Rp. 10.000");
+                    transfer_amount.setText("");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_transfer_amountKeyPressed
 
     /**
      * @param args the command line arguments

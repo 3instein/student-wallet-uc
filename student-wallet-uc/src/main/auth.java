@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,6 +21,8 @@ public class auth extends javax.swing.JFrame {
         DB.config();
         conn = DB.conn;
         stmt = DB.stmt;
+        
+        
     }
 
     /**
@@ -71,8 +75,18 @@ public class auth extends javax.swing.JFrame {
         });
 
         username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameKeyPressed(evt);
+            }
+        });
 
         password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,23 +162,69 @@ public class auth extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
+            try {
+                rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    int status = rs.getInt("status");
+                    if (status == 1) {
+                        int user_id = rs.getInt("user_id");
+                        new MainMenu(user_id).setVisible(true);
+                        dispose();
+                    } else if (status == 0) {
+                        JOptionPane.showMessageDialog(null, "Account is not active!");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Wrong username or password.\nPlease contact the Admin if you forget your username or password!");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_passwordKeyPressed
+
+    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
+            try {
+                rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    int status = rs.getInt("status");
+                    if (status == 1) {
+                        int user_id = rs.getInt("user_id");
+                        new MainMenu(user_id).setVisible(true);
+                        dispose();
+                    } else if (status == 0) {
+                        JOptionPane.showMessageDialog(null, "Account is not active!");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Wrong username or password.\nPlease contact the Admin if you forget your username or password!");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_usernameKeyPressed
+
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        sql = "SELECT user_id, username, password, status FROM user WHERE username='"+ username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
-        try{
+        sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
+        try {
             rs = stmt.executeQuery(sql);
-            if(rs.next()){
+            if (rs.next()) {
                 int status = rs.getInt("status");
-                if (status == 1){
+                if (status == 1) {
                     int user_id = rs.getInt("user_id");
                     new MainMenu(user_id).setVisible(true);
                     dispose();
-                } else if(status == 0){
+                } else if (status == 0) {
                     JOptionPane.showMessageDialog(null, "Account is not active!");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong username or password.\nPlease contact the Admin if you forget your username or password!");
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_loginActionPerformed
