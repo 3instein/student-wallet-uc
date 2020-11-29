@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package main;
+import java.awt.event.KeyEvent;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
@@ -93,9 +94,11 @@ public class history extends javax.swing.JFrame {
         display = new javax.swing.JTable();
         previous = new javax.swing.JButton();
         next = new javax.swing.JButton();
+        search = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Transcantion History");
+        setTitle("Transaction History");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
@@ -181,30 +184,47 @@ public class history extends javax.swing.JFrame {
         }
     });
 
+    search.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            searchKeyPressed(evt);
+        }
+    });
+
+    jLabel2.setText("Search by Date ( ex : Apr 1 )");
+
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel4Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(11, Short.MAX_VALUE))
-        .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(85, 85, 85)
             .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(113, 113, 113)
+            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(85, 85, 85))
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(15, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(294, 294, 294))
     );
     jPanel4Layout.setVerticalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(72, 72, 72)
+            .addGap(50, 50, 50)
+            .addComponent(jLabel2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(68, 68, 68))
     );
 
@@ -295,6 +315,39 @@ public class history extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nextActionPerformed
 
+    private void searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            init();
+            String date = search.getText();
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
+            }
+            
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+            
+            sql = "SELECT * FROM history WHERE date LIKE '%" + date + "%' AND user_id=" + user_id + ";";
+            try{
+                rs = stmt.executeQuery(sql);
+                while(rs.next()){
+                    int transaction_id = rs.getInt("transaction_id");
+                    String type = rs.getString("type");
+                    int amount = rs.getInt("amount");
+                    date = rs.getString("date");
+                    model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_searchKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -334,11 +387,13 @@ public class history extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JTable display;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton next;
     private javax.swing.JButton previous;
+    private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }
