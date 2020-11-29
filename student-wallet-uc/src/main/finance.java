@@ -10,6 +10,7 @@ package main;
     import java.text.DecimalFormat;
     import java.text.DecimalFormatSymbols;
     import javax.swing.*;
+    import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author reyna
@@ -24,12 +25,15 @@ public class finance extends javax.swing.JFrame {
     ResultSet rs;
     String sql;
     
+    DefaultTableModel model;
+    
     /**
      * Creates new form finance
      */
     public finance(int user_id) {
         this.user_id = user_id;
         initComponents();
+        init();
         connection DB = new connection();
         DB.config();
         conn = DB.conn;
@@ -44,8 +48,7 @@ public class finance extends javax.swing.JFrame {
 
         rp.setDecimalFormatSymbols(formatRp);
         
-        
-        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 5;";
+        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10;";
         try{
             rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -53,13 +56,13 @@ public class finance extends javax.swing.JFrame {
                 int amount = rs.getInt("amount");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
-                
+                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
             }
             sql = "SELECT count(*) FROM payment WHERE user_id=" + user_id + ";";
             rs = stmt.executeQuery(sql);
             if(rs.next()){
                 totalpage = rs.getInt("count(*)");
-                totalpage = (float)Math.ceil(totalpage - 10) - 1;
+                totalpage = (float)Math.ceil(totalpage/10) - 1;
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -129,12 +132,22 @@ public class finance extends javax.swing.JFrame {
         previous.setText("Previous Page");
         previous.setBorderPainted(false);
         previous.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousActionPerformed(evt);
+            }
+        });
 
         next.setBackground(new java.awt.Color(64, 191, 64));
         next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         next.setText("Next Page");
         next.setBorderPainted(false);
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
 
         display.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,43 +156,42 @@ public class finance extends javax.swing.JFrame {
             new String [] {
 
             }
-        ));
-        jScrollPane3.setViewportView(display);
+        )
+        {public boolean isCellEditable(int row, int column){return false;}}
+    );
+    jScrollPane3.setViewportView(display);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(previous)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(next)
-                .addGap(75, 75, 75))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
+    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+    jPanel4.setLayout(jPanel4Layout);
+    jPanel4Layout.setHorizontalGroup(
+        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(75, 75, 75)
+            .addComponent(previous)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(next)
+            .addGap(75, 75, 75))
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(20, 20, 20)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(21, Short.MAX_VALUE))
+    );
+    jPanel4Layout.setVerticalGroup(
+        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(30, 30, 30)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(30, 30, 30)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(67, Short.MAX_VALUE))
+    );
 
-        getContentPane().add(jPanel4);
-        jPanel4.setBounds(0, 60, 790, 350);
+    getContentPane().add(jPanel4);
+    jPanel4.setBounds(0, 60, 790, 350);
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -187,6 +199,87 @@ public class finance extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
+    private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
+        init();
+        if(page == 0){
+            JOptionPane.showMessageDialog(this, "This is the first page!");
+            return;
+        } else {
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+            model.removeRow(i);
+            }
+            page--;
+        }
+        offset = page * 10;
+        
+        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
+        try{
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+            
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int payment_id = rs.getInt("payment_id");
+                int amount = rs.getInt("amount");
+                String date = rs.getString("date");
+                String status = rs.getString("status");
+                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_previousActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        init();
+        
+        if(page < totalpage){
+            page++;
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "This is the last page!");
+            return;
+        }
+        offset = page * 10;
+
+
+        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
+        try{
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+            
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int payment_id = rs.getInt("payment_id");
+                int amount = rs.getInt("amount");
+                String date = rs.getString("date");
+                String status = rs.getString("status");
+                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_nextActionPerformed
+    public void init(){
+        model = (DefaultTableModel) display.getModel();
+        Object[] newIdentifiers = new Object[]{"Payment ID", "Amount", "Date", "Status"};
+        model.setColumnIdentifiers(newIdentifiers);
+    }
+    
     /**
      * @param args the command line arguments
      */
