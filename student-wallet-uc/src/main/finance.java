@@ -17,13 +17,13 @@ package main;
 public class finance extends javax.swing.JFrame {
     int user_id;
     int page = 0;
+    float totalpage = 0;
     int offset = page * 5;
     Connection conn;
     Statement stmt;
     ResultSet rs;
     String sql;
     
-    DefaultListModel listModel;
     /**
      * Creates new form finance
      */
@@ -44,7 +44,6 @@ public class finance extends javax.swing.JFrame {
 
         rp.setDecimalFormatSymbols(formatRp);
         
-        listModel = new DefaultListModel();
         
         sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 5;";
         try{
@@ -54,8 +53,13 @@ public class finance extends javax.swing.JFrame {
                 int amount = rs.getInt("amount");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
-                listModel.addElement("Payment ID : " + payment_id  + " || Amount : " + rp.format(amount) + " || Date : " + date + " || Status : " + status);
-                display.setModel(listModel);
+                
+            }
+            sql = "SELECT count(*) FROM payment WHERE user_id=" + user_id + ";";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                totalpage = rs.getInt("count(*)");
+                totalpage = (float)Math.ceil(totalpage - 10) - 1;
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -74,8 +78,6 @@ public class finance extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        display = new javax.swing.JList<>();
         previous = new javax.swing.JButton();
         next = new javax.swing.JButton();
 
@@ -120,8 +122,6 @@ public class finance extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(251, 211, 176));
 
-        jScrollPane1.setViewportView(display);
-
         previous.setBackground(new java.awt.Color(255, 255, 255));
         previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         previous.setText("Previous Page");
@@ -139,26 +139,20 @@ public class finance extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(previous)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
                 .addComponent(next)
                 .addGap(90, 90, 90))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(199, 199, 199)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4);
@@ -209,10 +203,8 @@ public class finance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JList<String> display;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton next;
     private javax.swing.JButton previous;
     // End of variables declaration//GEN-END:variables

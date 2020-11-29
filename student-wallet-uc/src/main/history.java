@@ -18,7 +18,8 @@ package main;
 public class history extends javax.swing.JFrame {
     int user_id;
     int page = 0;
-    int offset = page * 5;
+    float totalpage = 0;
+    int offset = page * 10;
     Connection conn;
     Statement stmt;
     ResultSet rs;
@@ -48,7 +49,7 @@ public class history extends javax.swing.JFrame {
 
         rp.setDecimalFormatSymbols(formatRp);
         
-        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5;";
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10;";
         try{
             rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -57,6 +58,12 @@ public class history extends javax.swing.JFrame {
                 int amount = rs.getInt("amount");
                 String date = rs.getString("date");
                 model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+            }
+            sql = "SELECT count(*) FROM history WHERE user_id=" + user_id + ";";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                totalpage = rs.getInt("count(*)");
+                totalpage = (float)Math.ceil(totalpage/10) - 1;
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -149,62 +156,60 @@ public class history extends javax.swing.JFrame {
             new String [] {
 
             }
-        )
-        {public boolean isCellEditable(int row, int column){return false;}}
-    );
-    jScrollPane3.setViewportView(display);
+        ));
+        jScrollPane3.setViewportView(display);
 
-    previous.setBackground(new java.awt.Color(64, 191, 64));
-    previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    previous.setText("Previous Page");
-    previous.setBorderPainted(false);
-    previous.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            previousActionPerformed(evt);
-        }
-    });
+        previous.setBackground(new java.awt.Color(64, 191, 64));
+        previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        previous.setText("Previous Page");
+        previous.setBorderPainted(false);
+        previous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousActionPerformed(evt);
+            }
+        });
 
-    next.setBackground(new java.awt.Color(64, 191, 64));
-    next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    next.setText("Next Page");
-    next.setBorderPainted(false);
-    next.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            nextActionPerformed(evt);
-        }
-    });
+        next.setBackground(new java.awt.Color(64, 191, 64));
+        next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        next.setText("Next Page");
+        next.setBorderPainted(false);
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
 
-    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-    jPanel4.setLayout(jPanel4Layout);
-    jPanel4Layout.setHorizontalGroup(
-        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel4Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(11, Short.MAX_VALUE))
-        .addGroup(jPanel4Layout.createSequentialGroup()
-            .addGap(85, 85, 85)
-            .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(85, 85, 85))
-    );
-    jPanel4Layout.setVerticalGroup(
-        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel4Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(30, 30, 30)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(68, 68, 68))
-    );
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
+        );
 
-    getContentPane().add(jPanel4);
-    jPanel4.setBounds(0, 60, 770, 350);
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 60, 770, 350);
 
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -223,9 +228,9 @@ public class history extends javax.swing.JFrame {
             }
             page--;
         }
-        offset = page * 5;
+        offset = page * 10;
         
-        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5 OFFSET " + offset + ";";
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10 OFFSET " + offset + ";";
         try{
             DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
             DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -252,27 +257,19 @@ public class history extends javax.swing.JFrame {
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         init();
         
-        page++;
-        offset = page * 5;
-
-        
-        try{
-            sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 5 OFFSET " + offset + ";";
-            rs = stmt.executeQuery(sql);
-            if(!rs.next()){
-                JOptionPane.showMessageDialog(this, "This is the last page!");
-                page--;
-                return;
-            } else {
-                for(int i = display.getRowCount() - 1; i >= 0; i--){
-                    model.removeRow(i);
-                }
+        if(page < totalpage){
+            page++;
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
             }
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(this, "This is the last page!");
+            return;
         }
+        offset = page * 10;
 
-        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY date DESC LIMIT 5 OFFSET " + offset + ";";
+
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10 OFFSET " + offset + ";";
         try{
             DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
             DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
