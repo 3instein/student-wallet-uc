@@ -93,6 +93,7 @@ public class finance extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance");
+        setBackground(new java.awt.Color(246, 0, 0));
         setMinimumSize(new java.awt.Dimension(807, 452));
         getContentPane().setLayout(null);
 
@@ -171,7 +172,11 @@ public class finance extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(display);
 
+    pay.setBackground(new java.awt.Color(244, 129, 30));
+    pay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     pay.setText("Pay");
+    pay.setBorder(null);
+    pay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     pay.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             payActionPerformed(evt);
@@ -185,11 +190,11 @@ public class finance extends javax.swing.JFrame {
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(75, 75, 75)
             .addComponent(previous)
-            .addGap(165, 165, 165)
+            .addGap(178, 178, 178)
             .addComponent(pay, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(next)
-            .addGap(75, 75, 75))
+            .addGap(68, 68, 68))
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(20, 20, 20)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,14 +207,15 @@ public class finance extends javax.swing.JFrame {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addGap(30, 30, 30)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addComponent(pay)))
-            .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(pay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(40, 67, Short.MAX_VALUE))))
     );
 
     getContentPane().add(jPanel4);
