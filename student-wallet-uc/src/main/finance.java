@@ -80,10 +80,12 @@ public class finance extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         previous = new javax.swing.JButton();
         next = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        display = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance");
-        setMinimumSize(new java.awt.Dimension(860, 452));
+        setMinimumSize(new java.awt.Dimension(807, 452));
         getContentPane().setLayout(null);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,7 +109,7 @@ public class finance extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(back)
-                .addContainerGap(758, Short.MAX_VALUE))
+                .addContainerGap(708, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,45 +120,64 @@ public class finance extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 840, 60);
+        jPanel3.setBounds(0, 0, 790, 60);
 
         jPanel4.setBackground(new java.awt.Color(251, 211, 176));
 
-        previous.setBackground(new java.awt.Color(255, 255, 255));
+        previous.setBackground(new java.awt.Color(64, 191, 64));
         previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         previous.setText("Previous Page");
         previous.setBorderPainted(false);
         previous.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        next.setBackground(new java.awt.Color(255, 255, 255));
+        next.setBackground(new java.awt.Color(64, 191, 64));
         next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         next.setText("Next Page");
         next.setBorderPainted(false);
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        display.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(display);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(75, 75, 75)
                 .addComponent(previous)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(next)
-                .addGap(90, 90, 90))
+                .addGap(75, 75, 75))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(0, 60, 840, 350);
+        jPanel4.setBounds(0, 60, 790, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,8 +224,10 @@ public class finance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JTable display;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton next;
     private javax.swing.JButton previous;
     // End of variables declaration//GEN-END:variables
