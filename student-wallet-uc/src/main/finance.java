@@ -17,6 +17,9 @@ package main;
  */
 public class finance extends javax.swing.JFrame {
     int user_id;
+    int payment_id;
+    int amount;
+    int balance;
     int page = 0;
     float totalpage = 0;
     int offset = page * 5;
@@ -26,7 +29,8 @@ public class finance extends javax.swing.JFrame {
     String sql;
     
     DefaultTableModel model;
-    
+    int selected;
+    String status;
     /**
      * Creates new form finance
      */
@@ -85,6 +89,7 @@ public class finance extends javax.swing.JFrame {
         next = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         display = new javax.swing.JTable();
+        pay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance");
@@ -159,7 +164,19 @@ public class finance extends javax.swing.JFrame {
         )
         {public boolean isCellEditable(int row, int column){return false;}}
     );
+    display.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            displayMouseClicked(evt);
+        }
+    });
     jScrollPane3.setViewportView(display);
+
+    pay.setText("Pay");
+    pay.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            payActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
@@ -168,6 +185,8 @@ public class finance extends javax.swing.JFrame {
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(75, 75, 75)
             .addComponent(previous)
+            .addGap(165, 165, 165)
+            .addComponent(pay, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(next)
             .addGap(75, 75, 75))
@@ -181,11 +200,16 @@ public class finance extends javax.swing.JFrame {
         .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(30, 30, 30)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(30, 30, 30)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(67, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(pay)))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
 
     getContentPane().add(jPanel4);
@@ -264,8 +288,8 @@ public class finance extends javax.swing.JFrame {
             
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-                int payment_id = rs.getInt("payment_id");
-                int amount = rs.getInt("amount");
+                payment_id = rs.getInt("payment_id");
+                amount = rs.getInt("amount");
                 String date = rs.getString("date");
                 String status = rs.getString("status");
                 model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
@@ -274,6 +298,67 @@ public class finance extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_nextActionPerformed
+
+    private void displayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayMouseClicked
+        selected = display.getSelectedRow();
+        payment_id = (int) display.getValueAt(selected, 0);
+        status = (String) display.getValueAt(selected, 3);
+    }//GEN-LAST:event_displayMouseClicked
+
+    private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
+        sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
+        try{
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                balance = rs.getInt("balance");
+            }
+            sql = "SELECT amount FROM payment WHERE payment_id=" + payment_id + ";";
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                amount = rs.getInt("amount");
+            }
+            if(amount < balance && status.equals("Unpaid")){
+                sql = "SELECT status FROM payment WHERE payment_id=" + payment_id + ";";
+                rs = stmt.executeQuery(sql);
+                if(rs.next()){
+                    status = rs.getString("status");
+                    if(status.equals("Unpaid")){
+                        
+                        DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+                        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+                        formatRp.setCurrencySymbol("Rp. ");
+                        formatRp.setMonetaryDecimalSeparator(',');
+                        formatRp.setGroupingSeparator('.');
+
+                        rp.setDecimalFormatSymbols(formatRp);
+                        
+                        sql = "UPDATE payment SET status='Paid' WHERE payment_id=" + payment_id + ";";
+                        stmt.execute(sql);
+                        balance -= amount;
+                        sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+                        stmt.execute(sql);
+                        java.util.Date date = java.util.Calendar.getInstance().getTime();
+                        sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Payment', " + amount + ", '" + date + "');";
+                        stmt.execute(sql);
+                        JOptionPane.showMessageDialog(this, "Payment Successful! Payment ID: #" + payment_id + "\n" + rp.format(amount) + "\n" + date);
+                        model.setValueAt("Paid", selected, 3);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "This payment is already paid!");
+                        return;
+                    }
+                }
+            } else if(status.equals("Paid")){
+                JOptionPane.showMessageDialog(this, "This payment is already paid!");
+                return;
+            } else {
+                JOptionPane.showMessageDialog(this, "Your balance is not enough!");
+                return;
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_payActionPerformed
     public void init(){
         model = (DefaultTableModel) display.getModel();
         Object[] newIdentifiers = new Object[]{"Payment ID", "Amount", "Date", "Status"};
@@ -322,6 +407,7 @@ public class finance extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton next;
+    private javax.swing.JButton pay;
     private javax.swing.JButton previous;
     // End of variables declaration//GEN-END:variables
 }
