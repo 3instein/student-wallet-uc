@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2020 at 02:07 PM
+-- Generation Time: Dec 03, 2020 at 02:52 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -52,7 +52,22 @@ INSERT INTO `history` (`transaction_id`, `user_id`, `type`, `amount`, `date`) VA
 (10, 1, 'Deposit', 3000000, 'Sun Nov 22 10:18:10 WIB 2020'),
 (11, 1, 'Deposit', 6000000, 'Sun Nov 22 10:18:14 WIB 2020'),
 (12, 1, 'Withdraw', 10000000, 'Sun Nov 22 10:18:25 WIB 2020'),
-(13, 1, 'Deposit', 20000, 'Mon Nov 23 14:47:05 WIB 2020');
+(13, 1, 'Deposit', 20000, 'Mon Nov 23 14:47:05 WIB 2020'),
+(14, 1, 'Deposit', 10000, 'Sun Nov 29 15:01:17 WIB 2020'),
+(15, 1, 'Deposit', 70000, 'Sun Nov 29 15:01:22 WIB 2020'),
+(16, 1, 'Deposit', 10000, 'Sun Nov 29 15:02:33 WIB 2020'),
+(17, 1, 'Deposit', 10000, 'Sun Nov 29 15:02:37 WIB 2020'),
+(18, 1, 'Withdraw', 120000, 'Sun Nov 29 15:02:47 WIB 2020'),
+(19, 1, 'Withdraw', 1000000, 'Sun Nov 29 15:02:53 WIB 2020'),
+(20, 1, 'Outgoing Transfer', 1000000, 'Sun Nov 29 15:04:57 WIB 2020'),
+(21, 2, 'Incoming Transfer', 1000000, 'Sun Nov 29 15:04:57 WIB 2020'),
+(22, 1, 'Withdraw', 2000000, 'Sun Nov 29 15:41:30 WIB 2020'),
+(23, 1, 'Deposit', 2000000, 'Sun Nov 29 15:42:14 WIB 2020'),
+(25, 1, 'Deposit', 1700000, 'Sun Nov 29 15:53:53 WIB 2020'),
+(27, 1, 'Deposit', 1700000, 'Sun Nov 29 15:54:26 WIB 2020'),
+(28, 1, 'Payment', 1700000, 'Sun Nov 29 15:58:18 WIB 2020'),
+(29, 1, 'Deposit', 1700000, 'Sun Nov 29 16:03:44 WIB 2020'),
+(30, 1, 'Payment', 1700000, 'Sun Nov 29 16:03:47 WIB 2020');
 
 -- --------------------------------------------------------
 
@@ -73,7 +88,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `user_id`, `amount`, `date`, `status`) VALUES
-(1, 1, 1700000, '24-11-2020', 'Unpaid');
+(1, 1, 1700000, '24-11-2020', 'Paid');
 
 -- --------------------------------------------------------
 
@@ -96,8 +111,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `nim`, `username`, `password`, `balance`, `full_name`, `status`) VALUES
-(1, '0706012010011', 'rkindarto', 'root', 5020000, 'Reynaldi Kindarto', 1),
-(2, '0706012010021', 'eco123', '12345', 10100000, 'Michael Eco', 1);
+(1, '0706012010011', 'rkindarto', 'root', 1300000, 'Reynaldi Kindarto', 1),
+(2, '0706012010021', 'eco123', '12345', 11100000, 'Michael Eco', 1);
 
 --
 -- Indexes for dumped tables
@@ -133,7 +148,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `payment`
