@@ -29,7 +29,7 @@ public class finance extends javax.swing.JFrame {
     String sql;
     
     DefaultTableModel model;
-    int selected;
+    int selected = -1;
     String status;
     /**
      * Creates new form finance
@@ -312,6 +312,10 @@ public class finance extends javax.swing.JFrame {
     }//GEN-LAST:event_displayMouseClicked
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
+        if(selected == -1){
+            JOptionPane.showMessageDialog(this, "Select a payment first!");
+            return;
+        }
         sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
         try{
             rs = stmt.executeQuery(sql);

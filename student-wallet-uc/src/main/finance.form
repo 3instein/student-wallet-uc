@@ -135,14 +135,13 @@
                               <Component id="previous" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="next" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="pay" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace min="40" pref="67" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
