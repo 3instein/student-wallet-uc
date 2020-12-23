@@ -171,8 +171,13 @@ public class auth extends javax.swing.JFrame {
                     int status = rs.getInt("status");
                     if (status == 1) {
                         int user_id = rs.getInt("user_id");
-                        new MainMenu(user_id).setVisible(true);
-                        dispose();
+                        if(user_id == 0){
+                            new adminMenu(user_id).setVisible(true);
+                            dispose();
+                        } else {
+                            new MainMenu(user_id).setVisible(true);
+                            dispose();
+                        }
                     } else if (status == 0) {
                         JOptionPane.showMessageDialog(null, "Account is not active!");
                     }
