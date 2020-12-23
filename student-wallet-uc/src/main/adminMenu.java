@@ -5,6 +5,11 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.Timer;
 
 /**
@@ -21,6 +26,19 @@ public class adminMenu extends javax.swing.JFrame {
     public adminMenu(int user_id) {
         this.user_id = user_id;
         initComponents();
+        
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "dd MMMM yyyy hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String StrDate = formatTime.format(currentTime);
+                clock.setText(StrDate);
+            }
+        });
+        updateTimer.start();
+        welcome.setText("Welcome Admin");
     }
 
     /**
@@ -42,7 +60,7 @@ public class adminMenu extends javax.swing.JFrame {
         change_password = new javax.swing.JButton();
         view_history = new javax.swing.JButton();
         view_finance = new javax.swing.JButton();
-        maintanance = new javax.swing.JButton();
+        maintenance = new javax.swing.JButton();
         logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,16 +156,16 @@ public class adminMenu extends javax.swing.JFrame {
             }
         });
 
-        maintanance.setBackground(new java.awt.Color(64, 191, 64));
-        maintanance.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
-        maintanance.setForeground(new java.awt.Color(255, 255, 255));
-        maintanance.setText("Maintanance");
-        maintanance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        maintanance.setBorderPainted(false);
-        maintanance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        maintanance.addActionListener(new java.awt.event.ActionListener() {
+        maintenance.setBackground(new java.awt.Color(64, 191, 64));
+        maintenance.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        maintenance.setForeground(new java.awt.Color(255, 255, 255));
+        maintenance.setText("Maintenance");
+        maintenance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        maintenance.setBorderPainted(false);
+        maintenance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        maintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintananceActionPerformed(evt);
+                maintenanceActionPerformed(evt);
             }
         });
 
@@ -189,7 +207,7 @@ public class adminMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(view_history, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(view_finance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maintanance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(maintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,7 +228,7 @@ public class adminMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(maintanance, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(maintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(change_status, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(146, 146, 146))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -231,34 +249,34 @@ public class adminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void change_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_balanceActionPerformed
-        new deposit(user_id).setVisible(true);
+        new change_balance(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_change_balanceActionPerformed
 
     private void change_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_statusActionPerformed
-        new transfer(user_id).setVisible(true);
+        new change_status(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_change_statusActionPerformed
 
     private void change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_passwordActionPerformed
-        new balance(user_id).setVisible(true);
+        new change_password(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_change_passwordActionPerformed
 
     private void view_historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_historyActionPerformed
-        new withdraw(user_id).setVisible(true);
+        new view_history(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_view_historyActionPerformed
 
     private void view_financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_financeActionPerformed
-        new finance(user_id).setVisible(true);
+        new view_finance(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_view_financeActionPerformed
 
-    private void maintananceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintananceActionPerformed
-        new history(user_id).setVisible(true);
+    private void maintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenanceActionPerformed
+        new maintenance(user_id).setVisible(true);
         dispose();
-    }//GEN-LAST:event_maintananceActionPerformed
+    }//GEN-LAST:event_maintenanceActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         new auth().setVisible(true);
@@ -309,7 +327,7 @@ public class adminMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton logout;
-    private javax.swing.JButton maintanance;
+    private javax.swing.JButton maintenance;
     private javax.swing.JButton view_finance;
     private javax.swing.JButton view_history;
     private javax.swing.JLabel welcome;
