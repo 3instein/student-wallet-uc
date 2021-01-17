@@ -51,6 +51,7 @@ public class change_password extends javax.swing.JFrame {
         back_balance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Change Password (Admin)");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 

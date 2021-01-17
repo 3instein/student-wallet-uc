@@ -71,6 +71,7 @@ public class view_finance extends javax.swing.JFrame {
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Finance (Admin)");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 

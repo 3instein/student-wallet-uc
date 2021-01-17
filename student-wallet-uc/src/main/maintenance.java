@@ -28,22 +28,430 @@ public class maintenance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel4 = new javax.swing.JPanel();
+        add_nim = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        add_username = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        add_password = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        add_balance = new javax.swing.JTextField();
+        add_name = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        submit = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        remove_nim = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        maintanance = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        back = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Maintanance (Admin)");
+        setMinimumSize(new java.awt.Dimension(787, 452));
+        getContentPane().setLayout(null);
+
+        jPanel4.setBackground(new java.awt.Color(251, 211, 176));
+
+        add_nim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_nimActionPerformed(evt);
+            }
+        });
+        add_nim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                add_nimKeyPressed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("Add Username");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Add NIM");
+
+        add_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_usernameActionPerformed(evt);
+            }
+        });
+        add_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                add_usernameKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Add Password");
+
+        add_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_passwordActionPerformed(evt);
+            }
+        });
+        add_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                add_passwordKeyPressed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Add Full Name");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Add Balance");
+
+        add_balance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_balanceActionPerformed(evt);
+            }
+        });
+        add_balance.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                add_balanceKeyPressed(evt);
+            }
+        });
+
+        add_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_nameActionPerformed(evt);
+            }
+        });
+        add_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                add_nameKeyPressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("Rp. ");
+
+        submit.setBackground(new java.awt.Color(64, 191, 64));
+        submit.setFont(new java.awt.Font("Open Sans ExtraBold", 0, 18)); // NOI18N
+        submit.setForeground(new java.awt.Color(255, 255, 255));
+        submit.setText("Submit");
+        submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setText("Add User");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setText("Remove User");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setText("Remove NIM");
+
+        remove_nim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remove_nimActionPerformed(evt);
+            }
+        });
+        remove_nim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                remove_nimKeyPressed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setText("Maintanance");
+
+        maintanance.setBackground(new java.awt.Color(244, 129, 30));
+        maintanance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        maintanance.setText("Maintanance");
+        maintanance.setBorder(null);
+        maintanance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        maintanance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maintananceActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(add_balance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel5)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(add_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(add_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(add_username))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(add_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(remove_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(maintanance, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(37, 37, 37))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(remove_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(add_username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add_password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(add_name, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maintanance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel6)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(add_balance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 60, 790, 460);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        back.setBackground(new java.awt.Color(255, 255, 255));
+        back.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        back.setText("<- Back");
+        back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        back.setContentAreaFilled(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(back)
+                .addContainerGap(708, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(back)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 790, 60);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void add_nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_nimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_nimActionPerformed
+
+    private void add_nimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_nimKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String target = add_nim.getText();
+            if(target.isBlank()){
+                JOptionPane.showMessageDialog(this, "Student number must be filled");
+                return;
+            }
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+
+            sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
+            try{
+                rs = stmt.executeQuery(sql);
+                if(rs.next()){
+                    user_id = rs.getInt("user_id");
+                } else {
+                    JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);
+                    return;
+                }
+                sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10;";
+                rs = stmt.executeQuery(sql);
+                while (rs.next()) {
+                    int payment_id = rs.getInt("payment_id");
+                    int amount = rs.getInt("amount");
+                    String date = rs.getString("date");
+                    String status = rs.getString("status");
+                    model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
+                }
+                sql = "SELECT count(*) FROM payment WHERE user_id=" + user_id + ";";
+                rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    totalpage = rs.getInt("count(*)");
+                    totalpage = (float) Math.ceil(totalpage / 10) - 1;
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+
+        }
+    }//GEN-LAST:event_add_nimKeyPressed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        new adminMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void add_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_usernameActionPerformed
+
+    private void add_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_usernameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_usernameKeyPressed
+
+    private void add_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_passwordActionPerformed
+
+    private void add_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_passwordKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_passwordKeyPressed
+
+    private void add_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_balanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_balanceActionPerformed
+
+    private void add_balanceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_balanceKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_balanceKeyPressed
+
+    private void add_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_nameActionPerformed
+
+    private void add_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_nameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_nameKeyPressed
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
+        try {
+            rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                int status = rs.getInt("status");
+                if (status == 1) {
+                    int user_id = rs.getInt("user_id");
+                    if (user_id == 0) {
+                        new adminMenu().setVisible(true);
+                        dispose();
+                    } else {
+                        new MainMenu(user_id).setVisible(true);
+                        dispose();
+                    }
+                } else if (status == 0) {
+                    JOptionPane.showMessageDialog(null, "Account is not active!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Wrong username or password.\nPlease contact the Admin if you forget your username or password!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_submitActionPerformed
+
+    private void remove_nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_nimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_remove_nimActionPerformed
+
+    private void remove_nimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_remove_nimKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_remove_nimKeyPressed
+
+    private void maintananceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintananceActionPerformed
+        if(selected == -1){
+            JOptionPane.showMessageDialog(this, "Select a payment first!");
+            return;
+        }
+        sql = "SELECT status FROM payment WHERE payment_id=" + payment_id + ";";
+        try{
+            rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                status = rs.getString("status");
+                if(status.equals("Paid")){
+                    status = "Unpaid";
+                    model.setValueAt(status, selected, 3);
+                    sql = "UPDATE payment SET status='" + status + "' WHERE payment_id=" + payment_id + ";";
+                    stmt.execute(sql);
+                    JOptionPane.showMessageDialog(this, "Payment status changed");
+                } else {
+                    status = "Paid";
+                    model.setValueAt(status, selected, 3);
+                    sql = "UPDATE payment SET status='" + status + "' WHERE payment_id=" + payment_id + ";";
+                    stmt.execute(sql);
+                    JOptionPane.showMessageDialog(this, "Payment status changed");
+                }
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_maintananceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +489,26 @@ public class maintenance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField add_balance;
+    private javax.swing.JTextField add_name;
+    private javax.swing.JTextField add_nim;
+    private javax.swing.JTextField add_password;
+    private javax.swing.JTextField add_username;
+    private javax.swing.JButton back;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton maintanance;
+    private javax.swing.JTextField remove_nim;
+    private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }

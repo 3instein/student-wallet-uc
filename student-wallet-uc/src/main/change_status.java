@@ -50,6 +50,7 @@ public class change_status extends javax.swing.JFrame {
         back_balance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Change Status (Admin)");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 

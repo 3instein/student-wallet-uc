@@ -62,6 +62,7 @@ public class view_history extends javax.swing.JFrame {
         back1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("View History (Admin)");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
