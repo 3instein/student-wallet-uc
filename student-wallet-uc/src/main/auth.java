@@ -46,7 +46,7 @@ public class auth extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome to Student Wallet UC");
-        setMinimumSize(new java.awt.Dimension(644, 464));
+        setMinimumSize(new java.awt.Dimension(644, 458));
         getContentPane().setLayout(null);
 
         jPanel3.setBackground(new java.awt.Color(244, 129, 30));
