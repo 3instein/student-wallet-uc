@@ -166,6 +166,8 @@ public class change_password extends javax.swing.JFrame {
                int target_id = rs.getInt("user_id");
                sql = "UPDATE `user` SET `password` = '" + password + "' WHERE user_id=" + target_id + ";";
                stmt.execute(sql);
+               student_number.setText("");
+               new_password.setText("");
                JOptionPane.showMessageDialog(this, "Password changed for user with student number " + target);
            } else {
                JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);

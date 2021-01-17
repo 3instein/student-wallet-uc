@@ -171,6 +171,8 @@ public class change_balance extends javax.swing.JFrame {
                 int target_id = rs.getInt("user_id");
                 sql = "UPDATE `user` SET `balance` = '" + balance + "' WHERE user_id=" + target_id + ";";
                 stmt.execute(sql);
+                student_number.setText("");
+                new_balance.setText("");
                 JOptionPane.showMessageDialog(this, "Balance changed for user with student number " + target);
             } else {
                 JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);

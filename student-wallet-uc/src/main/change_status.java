@@ -162,6 +162,8 @@ public class change_status extends javax.swing.JFrame {
                 int target_id = rs.getInt("user_id");
                 sql = "UPDATE `user` SET `status` = '" + status + "' WHERE user_id=" + target_id + ";";
                 stmt.execute(sql);
+                student_number.setText("");
+                new_status.setText("");
                 JOptionPane.showMessageDialog(this, "Status changed for user with student number " + target);
             } else {
                 JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);

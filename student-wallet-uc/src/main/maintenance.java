@@ -396,6 +396,11 @@ public class maintenance extends javax.swing.JFrame {
             sql = "INSERT INTO `user` (`user_id`, `nim`, `username`, `password`, `balance`, `full_name`, `status`) VALUES (NULL, '" + target + "', '" + user_name + "', '" + pass_word + "', " + bal + ", '" + fullname + "', '1')";
             stmt.execute(sql);
             JOptionPane.showMessageDialog(this, "User Added!");
+            nim.setText("");
+            username.setText("");
+            password.setText("");
+            full_name.setText("");
+            balance.setText("");
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -422,6 +427,7 @@ public class maintenance extends javax.swing.JFrame {
                      sql = "DELETE FROM user WHERE user_id=" + user_id + ";";
                      stmt.execute(sql);
                      JOptionPane.showMessageDialog(this, "Account deleted!");
+                     remove_nim.setText("");
                  } else {
                      JOptionPane.showMessageDialog(this, "There is no student number associated with " + target);
                  }
