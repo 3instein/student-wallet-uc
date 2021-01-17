@@ -43,7 +43,6 @@ public class deposit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
         jPanel3 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -59,23 +58,6 @@ public class deposit extends javax.swing.JFrame {
         setTitle("Deposit");
         setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
-
-        kGradientPanel1.setkEndColor(new java.awt.Color(0, 82, 212));
-        kGradientPanel1.setkStartColor(new java.awt.Color(58, 28, 113));
-
-        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
-        kGradientPanel1.setLayout(kGradientPanel1Layout);
-        kGradientPanel1Layout.setHorizontalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
-        );
-        kGradientPanel1Layout.setVerticalGroup(
-            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(kGradientPanel1);
-        kGradientPanel1.setBounds(430, 530, 465, 250);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -208,6 +190,7 @@ public class deposit extends javax.swing.JFrame {
         jPanel4.setBounds(0, 60, 770, 350);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -329,6 +312,5 @@ public class deposit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 }

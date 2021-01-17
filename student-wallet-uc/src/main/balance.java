@@ -124,13 +124,10 @@ public class balance extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(balance_content)))
+                    .addComponent(jLabel)
+                    .addComponent(balance_content))
                 .addContainerGap(614, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -147,6 +144,7 @@ public class balance extends javax.swing.JFrame {
         jPanel2.setBounds(0, 60, 770, 350);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed

@@ -222,6 +222,7 @@ public class transfer extends javax.swing.JFrame {
         jPanel4.setBounds(0, 60, 770, 350);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

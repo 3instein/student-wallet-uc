@@ -28,21 +28,254 @@ public class view_history extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        display = new javax.swing.JTable();
+        previous = new javax.swing.JButton();
+        next = new javax.swing.JButton();
+        search = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        back1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel4.setBackground(new java.awt.Color(251, 211, 176));
 
-        pack();
+        display.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        )
+        {public boolean isCellEditable(int row, int column){return false;}}
+    );
+    jScrollPane3.setViewportView(display);
+
+    previous.setBackground(new java.awt.Color(64, 191, 64));
+    previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    previous.setText("Previous Page");
+    previous.setBorderPainted(false);
+    previous.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            previousActionPerformed(evt);
+        }
+    });
+
+    next.setBackground(new java.awt.Color(64, 191, 64));
+    next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    next.setText("Next Page");
+    next.setBorderPainted(false);
+    next.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            nextActionPerformed(evt);
+        }
+    });
+
+    search.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            searchKeyPressed(evt);
+        }
+    });
+
+    jLabel2.setText("Search by Date ( ex : Apr 1 )");
+
+    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+    jPanel4.setLayout(jPanel4Layout);
+    jPanel4Layout.setHorizontalGroup(
+        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(85, 85, 85)
+            .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(113, 113, 113)
+            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(85, 85, 85))
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGap(316, 316, 316)
+            .addComponent(jLabel2)
+            .addGap(331, 331, 331))
+    );
+    jPanel4Layout.setVerticalGroup(
+        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(70, 70, 70)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(jLabel2)
+                    .addGap(10, 10, 10)
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(69, 69, 69))
+    );
+
+    getContentPane().add(jPanel4);
+    jPanel4.setBounds(0, 60, 770, 350);
+
+    jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+    back1.setBackground(new java.awt.Color(255, 255, 255));
+    back1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    back1.setText("<- Back");
+    back1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+    back1.setContentAreaFilled(false);
+    back1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    back1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            back1ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+    jPanel5.setLayout(jPanel5Layout);
+    jPanel5Layout.setHorizontalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGap(23, 23, 23)
+            .addComponent(back1)
+            .addContainerGap(696, Short.MAX_VALUE))
+    );
+    jPanel5Layout.setVerticalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGap(15, 15, 15)
+            .addComponent(back1)
+            .addContainerGap(26, Short.MAX_VALUE))
+    );
+
+    getContentPane().add(jPanel5);
+    jPanel5.setBounds(0, 0, 770, 60);
+
+    pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
+        init();
+        if(page == 0){
+            JOptionPane.showMessageDialog(this, "This is the first page!");
+            return;
+        } else {
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
+            }
+            page--;
+        }
+        offset = page * 10;
+
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10 OFFSET " + offset + ";";
+        try{
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int transaction_id = rs.getInt("transaction_id");
+                String type = rs.getString("type");
+                int amount = rs.getInt("amount");
+                String date = rs.getString("date");
+                model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_previousActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        init();
+
+        if(page < totalpage){
+            page++;
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "This is the last page!");
+            return;
+        }
+        offset = page * 10;
+
+        sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10 OFFSET " + offset + ";";
+        try{
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int transaction_id = rs.getInt("transaction_id");
+                String type = rs.getString("type");
+                int amount = rs.getInt("amount");
+                String date = rs.getString("date");
+                model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_nextActionPerformed
+
+    private void searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            init();
+            String date = search.getText();
+            for(int i = display.getRowCount() - 1; i >= 0; i--){
+                model.removeRow(i);
+            }
+
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+
+            sql = "SELECT * FROM history WHERE date LIKE '%" + date + "%' AND user_id=" + user_id + ";";
+            try{
+                rs = stmt.executeQuery(sql);
+                while(rs.next()){
+                    int transaction_id = rs.getInt("transaction_id");
+                    String type = rs.getString("type");
+                    int amount = rs.getInt("amount");
+                    date = rs.getString("date");
+                    model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_searchKeyPressed
+
+    private void back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1ActionPerformed
+        new MainMenu(user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_back1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +313,16 @@ public class view_history extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
+    private javax.swing.JButton back1;
+    private javax.swing.JTable display;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton next;
+    private javax.swing.JButton previous;
+    private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }

@@ -270,6 +270,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 730, 560);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed

@@ -227,6 +227,7 @@ public class withdraw extends javax.swing.JFrame {
         jPanel2.setBounds(0, 60, 770, 350);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void insert_withdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insert_withdrawalActionPerformed

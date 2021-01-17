@@ -53,7 +53,7 @@ public class change_password extends javax.swing.JFrame {
         back_balance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(787, 60));
+        setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(251, 211, 176));
@@ -107,7 +107,7 @@ public class change_password extends javax.swing.JFrame {
                 .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(submit_password, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
@@ -135,7 +135,7 @@ public class change_password extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(back_balance)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(738, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +146,10 @@ public class change_password extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 770, 60);
+        jPanel1.setBounds(0, 0, 820, 60);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed

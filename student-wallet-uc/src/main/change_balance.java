@@ -54,7 +54,7 @@ public class change_balance extends javax.swing.JFrame {
         back_balance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(787, 60));
+        setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(251, 211, 176));
@@ -100,7 +100,7 @@ public class change_balance extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(student_number)
                     .addComponent(submit_balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +145,7 @@ public class change_balance extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(back_balance)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(705, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,6 +159,7 @@ public class change_balance extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 770, 60);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submit_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_balanceActionPerformed

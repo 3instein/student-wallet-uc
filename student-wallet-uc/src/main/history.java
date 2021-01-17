@@ -236,6 +236,7 @@ public class history extends javax.swing.JFrame {
     jPanel4.setBounds(0, 60, 770, 350);
 
     pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

@@ -246,6 +246,7 @@ public class adminMenu extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 730, 560);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void change_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_balanceActionPerformed
