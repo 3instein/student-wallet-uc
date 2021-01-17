@@ -177,8 +177,18 @@ public class auth extends javax.swing.JFrame {
                             new adminMenu().setVisible(true);
                             dispose();
                         } else {
-                            new MainMenu(user_id).setVisible(true);
-                            dispose();
+                            sql = "SELECT balance FROM user WHERE user_id=0";
+                            rs = stmt.executeQuery(sql);
+                            if(rs.next()){
+                                int maintenance = rs.getInt("balance");
+                                if(maintenance == 0){
+                                    new MainMenu(user_id).setVisible(true);
+                                    dispose();
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Student wallet is under maintenance!");
+                                    return;
+                                }
+                            }
                         }
                     } else if (status == 0) {
                         JOptionPane.showMessageDialog(null, "Account is not active!");
@@ -205,8 +215,18 @@ public class auth extends javax.swing.JFrame {
                             new adminMenu().setVisible(true);
                             dispose();
                         } else {
-                            new MainMenu(user_id).setVisible(true);
-                            dispose();
+                            sql = "SELECT balance FROM user WHERE user_id=0";
+                            rs = stmt.executeQuery(sql);
+                            if(rs.next()){
+                                int maintenance = rs.getInt("balance");
+                                if(maintenance == 0){
+                                    new MainMenu(user_id).setVisible(true);
+                                    dispose();
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Student wallet is under maintenance!");
+                                    return;
+                                }
+                            }
                         }
                     } else if (status == 0) {
                         JOptionPane.showMessageDialog(null, "Account is not active!");
@@ -232,8 +252,18 @@ public class auth extends javax.swing.JFrame {
                         new adminMenu().setVisible(true);
                         dispose();
                     } else {
-                        new MainMenu(user_id).setVisible(true);
-                        dispose();
+                        sql = "SELECT balance FROM user WHERE user_id=0";
+                        rs = stmt.executeQuery(sql);
+                        if (rs.next()) {
+                            int maintenance = rs.getInt("balance");
+                            if (maintenance == 0) {
+                                new MainMenu(user_id).setVisible(true);
+                                dispose();
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Student wallet is under maintenance!");
+                                return;
+                            }
+                        }
                     }
                 } else if (status == 0) {
                     JOptionPane.showMessageDialog(null, "Account is not active!");

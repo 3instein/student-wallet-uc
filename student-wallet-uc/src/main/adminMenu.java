@@ -274,7 +274,7 @@ public class adminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_view_financeActionPerformed
 
     private void maintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenanceActionPerformed
-        new maintenance(user_id).setVisible(true);
+        new maintenance().setVisible(true);
         dispose();
     }//GEN-LAST:event_maintenanceActionPerformed
 

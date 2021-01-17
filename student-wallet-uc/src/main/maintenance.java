@@ -5,18 +5,31 @@
  */
 package main;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author reyna
  */
 public class maintenance extends javax.swing.JFrame {
     int user_id;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form maintenance
      */
-    public maintenance(int user_id) {
-        this.user_id = user_id;
+    public maintenance() {
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
     }
 
     /**
@@ -29,16 +42,16 @@ public class maintenance extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        add_nim = new javax.swing.JTextField();
+        nim = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        add_username = new javax.swing.JTextField();
+        username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        add_password = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        add_balance = new javax.swing.JTextField();
-        add_name = new javax.swing.JTextField();
+        balance = new javax.swing.JTextField();
+        full_name = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -46,7 +59,7 @@ public class maintenance extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         remove_nim = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        maintanance = new javax.swing.JButton();
+        maintenance = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
 
@@ -57,73 +70,73 @@ public class maintenance extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(251, 211, 176));
 
-        add_nim.addActionListener(new java.awt.event.ActionListener() {
+        nim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_nimActionPerformed(evt);
+                nimActionPerformed(evt);
             }
         });
-        add_nim.addKeyListener(new java.awt.event.KeyAdapter() {
+        nim.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                add_nimKeyPressed(evt);
+                nimKeyPressed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Add Username");
+        jLabel2.setText("Username");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Add NIM");
+        jLabel3.setText("Student Number");
 
-        add_username.addActionListener(new java.awt.event.ActionListener() {
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_usernameActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
-        add_username.addKeyListener(new java.awt.event.KeyAdapter() {
+        username.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                add_usernameKeyPressed(evt);
+                usernameKeyPressed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Add Password");
+        jLabel4.setText("Password");
 
-        add_password.addActionListener(new java.awt.event.ActionListener() {
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_passwordActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-        add_password.addKeyListener(new java.awt.event.KeyAdapter() {
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                add_passwordKeyPressed(evt);
+                passwordKeyPressed(evt);
             }
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Add Full Name");
+        jLabel5.setText("Full Name");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Add Balance");
+        jLabel6.setText("Balance");
 
-        add_balance.addActionListener(new java.awt.event.ActionListener() {
+        balance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_balanceActionPerformed(evt);
+                balanceActionPerformed(evt);
             }
         });
-        add_balance.addKeyListener(new java.awt.event.KeyAdapter() {
+        balance.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                add_balanceKeyPressed(evt);
+                balanceKeyPressed(evt);
             }
         });
 
-        add_name.addActionListener(new java.awt.event.ActionListener() {
+        full_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_nameActionPerformed(evt);
+                full_nameActionPerformed(evt);
             }
         });
-        add_name.addKeyListener(new java.awt.event.KeyAdapter() {
+        full_name.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                add_nameKeyPressed(evt);
+                full_nameKeyPressed(evt);
             }
         });
 
@@ -148,7 +161,7 @@ public class maintenance extends javax.swing.JFrame {
         jLabel9.setText("Remove User");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setText("Remove NIM");
+        jLabel10.setText("Student Number");
 
         remove_nim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,16 +175,16 @@ public class maintenance extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel11.setText("Maintanance");
+        jLabel11.setText("Maintenance");
 
-        maintanance.setBackground(new java.awt.Color(244, 129, 30));
-        maintanance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        maintanance.setText("Maintanance");
-        maintanance.setBorder(null);
-        maintanance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        maintanance.addActionListener(new java.awt.event.ActionListener() {
+        maintenance.setBackground(new java.awt.Color(244, 129, 30));
+        maintenance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        maintenance.setText("Maintenance");
+        maintenance.setBorder(null);
+        maintenance.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        maintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintananceActionPerformed(evt);
+                maintenanceActionPerformed(evt);
             }
         });
 
@@ -188,7 +201,7 @@ public class maintenance extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(add_balance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
@@ -199,17 +212,17 @@ public class maintenance extends javax.swing.JFrame {
                                             .addComponent(jLabel5)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(add_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(add_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(full_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(add_username))
+                                        .addComponent(username))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(45, 45, 45)
-                                        .addComponent(add_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel9)
@@ -218,7 +231,7 @@ public class maintenance extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(remove_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(maintanance, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(maintenance, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGap(37, 37, 37))))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -232,30 +245,30 @@ public class maintenance extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel10)
                     .addComponent(remove_nim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(add_username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add_password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel11))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(add_name, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maintanance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(full_name, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel6)
                 .addGap(7, 7, 7)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(add_balance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -302,156 +315,137 @@ public class maintenance extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void add_nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_nimActionPerformed
+    private void nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_nimActionPerformed
+    }//GEN-LAST:event_nimActionPerformed
 
-    private void add_nimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_nimKeyPressed
+    private void nimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nimKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            String target = add_nim.getText();
-            if(target.isBlank()){
-                JOptionPane.showMessageDialog(this, "Student number must be filled");
-                return;
-            }
-            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-            formatRp.setCurrencySymbol("Rp. ");
-            formatRp.setMonetaryDecimalSeparator(',');
-            formatRp.setGroupingSeparator('.');
-
-            rp.setDecimalFormatSymbols(formatRp);
-
-            sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
-            try{
-                rs = stmt.executeQuery(sql);
-                if(rs.next()){
-                    user_id = rs.getInt("user_id");
-                } else {
-                    JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);
-                    return;
-                }
-                sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10;";
-                rs = stmt.executeQuery(sql);
-                while (rs.next()) {
-                    int payment_id = rs.getInt("payment_id");
-                    int amount = rs.getInt("amount");
-                    String date = rs.getString("date");
-                    String status = rs.getString("status");
-                    model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
-                }
-                sql = "SELECT count(*) FROM payment WHERE user_id=" + user_id + ";";
-                rs = stmt.executeQuery(sql);
-                if (rs.next()) {
-                    totalpage = rs.getInt("count(*)");
-                    totalpage = (float) Math.ceil(totalpage / 10) - 1;
-                }
-            } catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-
+            
         }
-    }//GEN-LAST:event_add_nimKeyPressed
+    }//GEN-LAST:event_nimKeyPressed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         new adminMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void add_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_usernameActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_usernameActionPerformed
+    }//GEN-LAST:event_usernameActionPerformed
 
-    private void add_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_usernameKeyPressed
+    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_usernameKeyPressed
+    }//GEN-LAST:event_usernameKeyPressed
 
-    private void add_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_passwordActionPerformed
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_passwordActionPerformed
+    }//GEN-LAST:event_passwordActionPerformed
 
-    private void add_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_passwordKeyPressed
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_passwordKeyPressed
+    }//GEN-LAST:event_passwordKeyPressed
 
-    private void add_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_balanceActionPerformed
+    private void balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_balanceActionPerformed
+    }//GEN-LAST:event_balanceActionPerformed
 
-    private void add_balanceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_balanceKeyPressed
+    private void balanceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_balanceKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_balanceKeyPressed
+    }//GEN-LAST:event_balanceKeyPressed
 
-    private void add_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_nameActionPerformed
+    private void full_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_full_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_nameActionPerformed
+    }//GEN-LAST:event_full_nameActionPerformed
 
-    private void add_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_add_nameKeyPressed
+    private void full_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_full_nameKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_nameKeyPressed
+    }//GEN-LAST:event_full_nameKeyPressed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
-        try {
-            rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                int status = rs.getInt("status");
-                if (status == 1) {
-                    int user_id = rs.getInt("user_id");
-                    if (user_id == 0) {
-                        new adminMenu().setVisible(true);
-                        dispose();
-                    } else {
-                        new MainMenu(user_id).setVisible(true);
-                        dispose();
-                    }
-                } else if (status == 0) {
-                    JOptionPane.showMessageDialog(null, "Account is not active!");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Wrong username or password.\nPlease contact the Admin if you forget your username or password!");
-            }
-        } catch (Exception e) {
+        String target = nim.getText();
+        String user_name = username.getText();
+        String pass_word = password.getText();
+        String fullname = full_name.getText();
+        int bal = Integer.valueOf(balance.getText());
+        if(target.isBlank()){
+            JOptionPane.showMessageDialog(this, "Student number cannot be empty");
+            return;
+        } else if(user_name.isBlank()){
+            JOptionPane.showMessageDialog(this, "Username cannot be empty");
+            return;
+        } else if(pass_word.isBlank()){
+            JOptionPane.showMessageDialog(this, "Password cannot be empty");
+            return;
+        } else if(fullname.isBlank()){
+            JOptionPane.showMessageDialog(this, "Full nam cannot be empty");
+            return;
+        } else if(balance.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Balance cannot be empty");
+            return;
+        }
+        try{
+            sql = "INSERT INTO `user` (`user_id`, `nim`, `username`, `password`, `balance`, `full_name`, `status`) VALUES (NULL, '" + target + "', '" + user_name + "', '" + pass_word + "', " + bal + ", '" + fullname + "', '1')";
+            stmt.execute(sql);
+            JOptionPane.showMessageDialog(this, "User Added!");
+        } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_submitActionPerformed
 
     private void remove_nimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_nimActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_remove_nimActionPerformed
 
     private void remove_nimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_remove_nimKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+             String target = remove_nim.getText();
+             if(target.isBlank()){
+                 JOptionPane.showMessageDialog(this, "Student number must be filled");
+                 return;
+             }
+             sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
+             try{
+                 rs = stmt.executeQuery(sql);
+                 if(rs.next()){
+                     user_id = rs.getInt("user_id");
+                     sql = "DELETE FROM history WHERE user_id=" + user_id + ";";
+                     stmt.execute(sql);
+                     sql = "DELETE FROM user WHERE user_id=" + user_id + ";";
+                     stmt.execute(sql);
+                     JOptionPane.showMessageDialog(this, "Account deleted!");
+                 } else {
+                     JOptionPane.showMessageDialog(this, "There is no student number associated with " + target);
+                 }
+             } catch(Exception e){
+                 JOptionPane.showMessageDialog(this, e.getMessage());
+             }
+             
+        }
     }//GEN-LAST:event_remove_nimKeyPressed
 
-    private void maintananceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintananceActionPerformed
-        if(selected == -1){
-            JOptionPane.showMessageDialog(this, "Select a payment first!");
-            return;
-        }
-        sql = "SELECT status FROM payment WHERE payment_id=" + payment_id + ";";
+    private void maintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintenanceActionPerformed
+        sql = "SELECT balance FROM user WHERE user_id = 0";
         try{
             rs = stmt.executeQuery(sql);
             if(rs.next()){
-                status = rs.getString("status");
-                if(status.equals("Paid")){
-                    status = "Unpaid";
-                    model.setValueAt(status, selected, 3);
-                    sql = "UPDATE payment SET status='" + status + "' WHERE payment_id=" + payment_id + ";";
-                    stmt.execute(sql);
-                    JOptionPane.showMessageDialog(this, "Payment status changed");
-                } else {
-                    status = "Paid";
-                    model.setValueAt(status, selected, 3);
-                    sql = "UPDATE payment SET status='" + status + "' WHERE payment_id=" + payment_id + ";";
-                    stmt.execute(sql);
-                    JOptionPane.showMessageDialog(this, "Payment status changed");
-                }
+               int maintenance = rs.getInt("balance");
+               if(maintenance == 0){
+                   maintenance = 1;
+                   sql = "UPDATE user SET balance=" + maintenance + " WHERE user_id=0";
+                   stmt.execute(sql);
+                   JOptionPane.showMessageDialog(this, "Student wallet is under maintenance!");
+               } else {
+                   maintenance = 0;
+                   sql = "UPDATE user SET balance=" + maintenance + " WHERE user_id=0";
+                   stmt.execute(sql);
+                   JOptionPane.showMessageDialog(this, "Student wallet is out of maintenance!");
+               }
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_maintananceActionPerformed
+    }//GEN-LAST:event_maintenanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,12 +483,9 @@ public class maintenance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField add_balance;
-    private javax.swing.JTextField add_name;
-    private javax.swing.JTextField add_nim;
-    private javax.swing.JTextField add_password;
-    private javax.swing.JTextField add_username;
     private javax.swing.JButton back;
+    private javax.swing.JTextField balance;
+    private javax.swing.JTextField full_name;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -507,8 +498,11 @@ public class maintenance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JButton maintanance;
+    private javax.swing.JButton maintenance;
+    private javax.swing.JTextField nim;
+    private javax.swing.JTextField password;
     private javax.swing.JTextField remove_nim;
     private javax.swing.JButton submit;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
