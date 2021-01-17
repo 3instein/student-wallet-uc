@@ -4,19 +4,33 @@
  * and open the template in the editor.
  */
 package main;
-
+    import java.awt.event.KeyEvent;
+    import java.sql.Connection;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
+    import javax.swing.*;
+    import java.text.DecimalFormat;
+    import java.text.DecimalFormatSymbols;
 /**
  *
  * @author reyna
  */
 public class change_status extends javax.swing.JFrame {
     int user_id;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form change_status
      */
     public change_status(int user_id) {
         this.user_id = user_id;
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
     }
 
     /**
@@ -139,39 +153,26 @@ public class change_status extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submit_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_statusActionPerformed
-        int amount = Integer.valueOf(insert_withdrawal.getText());
-        if (amount < 10000){
-            JOptionPane.showMessageDialog(this, "Minimum withdraw amount is Rp.10.000");
-        } else if(amount >= 10000){
-            if(amount < balance - 100000){
-                try{
-                    balance = balance - amount;
-                    sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
-                    stmt.execute(sql);
-                    insert_withdrawal.setText("");
-                    DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-                    DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-                    formatRp.setCurrencySymbol("Rp. ");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    rp.setDecimalFormatSymbols(formatRp);
-                    JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
-                    withdrawal.setText(rp.format(balance));
-                    java.util.Date date=java.util.Calendar.getInstance().getTime();
-                    sql = "INSERT INTO history (user_id, type, amount, date) VALUE("+ user_id +", 'Withdraw', " + amount + ", '" + date + "');";
-                    stmt.execute(sql);
-                } catch(Exception e){
-                    JOptionPane.showMessageDialog(this, e.getMessage());
-                }
+        String target = student_number.getText();
+        String status = new_status.getText();
+        sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
+        try {
+            rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                int target_id = rs.getInt("user_id");
+                sql = "UPDATE `user` SET `status` = '" + status + "' WHERE user_id=" + target_id + ";";
+                stmt.execute(sql);
+                JOptionPane.showMessageDialog(this, "Status changed for user with student number " + target);
             } else {
-                JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
+                JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_submit_statusActionPerformed
 
     private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed
-        new MainMenu(user_id).setVisible(true);
+        new adminMenu(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_back_balanceActionPerformed
 

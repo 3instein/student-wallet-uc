@@ -8,10 +8,12 @@ import java.sql.Statement;
 import javax.swing.*;
 
 public class auth extends javax.swing.JFrame {
+
     Connection conn;
     Statement stmt;
     ResultSet rs;
     String sql;
+
     /**
      * Creates new form auth
      */
@@ -21,8 +23,7 @@ public class auth extends javax.swing.JFrame {
         DB.config();
         conn = DB.conn;
         stmt = DB.stmt;
-        
-        
+
     }
 
     /**
@@ -163,7 +164,7 @@ public class auth extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
             try {
                 rs = stmt.executeQuery(sql);
@@ -171,7 +172,7 @@ public class auth extends javax.swing.JFrame {
                     int status = rs.getInt("status");
                     if (status == 1) {
                         int user_id = rs.getInt("user_id");
-                        if(user_id == 0){
+                        if (user_id == 0) {
                             new adminMenu(user_id).setVisible(true);
                             dispose();
                         } else {
@@ -191,7 +192,7 @@ public class auth extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordKeyPressed
 
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             sql = "SELECT user_id, username, password, status FROM user WHERE username='" + username.getText() + "' AND password='" + new String(password.getPassword()) + "';";
             try {
                 rs = stmt.executeQuery(sql);
@@ -199,8 +200,13 @@ public class auth extends javax.swing.JFrame {
                     int status = rs.getInt("status");
                     if (status == 1) {
                         int user_id = rs.getInt("user_id");
-                        new MainMenu(user_id).setVisible(true);
-                        dispose();
+                        if (user_id == 0) {
+                            new adminMenu(user_id).setVisible(true);
+                            dispose();
+                        } else {
+                            new MainMenu(user_id).setVisible(true);
+                            dispose();
+                        }
                     } else if (status == 0) {
                         JOptionPane.showMessageDialog(null, "Account is not active!");
                     }
@@ -221,8 +227,13 @@ public class auth extends javax.swing.JFrame {
                 int status = rs.getInt("status");
                 if (status == 1) {
                     int user_id = rs.getInt("user_id");
-                    new MainMenu(user_id).setVisible(true);
-                    dispose();
+                    if (user_id == 0) {
+                        new adminMenu(user_id).setVisible(true);
+                        dispose();
+                    } else {
+                        new MainMenu(user_id).setVisible(true);
+                        dispose();
+                    }
                 } else if (status == 0) {
                     JOptionPane.showMessageDialog(null, "Account is not active!");
                 }

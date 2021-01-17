@@ -5,18 +5,33 @@
  */
 package main;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 /**
  *
  * @author reyna
  */
 public class change_password extends javax.swing.JFrame {
     int user_id;
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form change_password
      */
     public change_password(int user_id) {
         this.user_id = user_id;
         initComponents();
+        connection DB = new connection();
+        DB.config();
+        conn = DB.conn;
+        stmt = DB.stmt;
     }
 
     /**
@@ -77,7 +92,7 @@ public class change_password extends javax.swing.JFrame {
                     .addComponent(student_number)
                     .addComponent(submit_password, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                     .addComponent(new_password))
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +107,11 @@ public class change_password extends javax.swing.JFrame {
                 .addComponent(new_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(submit_password, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 60, 770, 350);
+        jPanel2.setBounds(0, 60, 820, 390);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(787, 60));
@@ -137,40 +152,27 @@ public class change_password extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed
-        new MainMenu(user_id).setVisible(true);
+        new adminMenu(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_back_balanceActionPerformed
 
     private void submit_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_passwordActionPerformed
-        int amount = Integer.valueOf(insert_withdrawal.getText());
-        if (amount < 10000){
-            JOptionPane.showMessageDialog(this, "Minimum withdraw amount is Rp.10.000");
-        } else if(amount >= 10000){
-            if(amount < balance - 100000){
-                try{
-                    balance = balance - amount;
-                    sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
-                    stmt.execute(sql);
-                    insert_withdrawal.setText("");
-                    DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-                    DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-                    formatRp.setCurrencySymbol("Rp. ");
-                    formatRp.setMonetaryDecimalSeparator(',');
-                    formatRp.setGroupingSeparator('.');
-                    rp.setDecimalFormatSymbols(formatRp);
-                    JOptionPane.showMessageDialog(this, "Your total balance is now " + rp.format(balance) + ".");
-                    withdrawal.setText(rp.format(balance));
-                    java.util.Date date=java.util.Calendar.getInstance().getTime();
-                    sql = "INSERT INTO history (user_id, type, amount, date) VALUE("+ user_id +", 'Withdraw', " + amount + ", '" + date + "');";
-                    stmt.execute(sql);
-                } catch(Exception e){
-                    JOptionPane.showMessageDialog(this, e.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Minimum balance left after withdrawal is Rp. 100.000");
-            }
-        }
+       String target = student_number.getText();
+       String password = new_password.getText();
+       sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
+       try{
+           rs = stmt.executeQuery(sql);
+           if(rs.next()){
+               int target_id = rs.getInt("user_id");
+               sql = "UPDATE `user` SET `password` = '" + password + "' WHERE user_id=" + target_id + ";";
+               stmt.execute(sql);
+               JOptionPane.showMessageDialog(this, "Password changed for user with student number " + target);
+           } else {
+               JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);
+           }
+       } catch(Exception e){
+           JOptionPane.showMessageDialog(this, e.getMessage());
+       }
     }//GEN-LAST:event_submit_passwordActionPerformed
 
     /**
