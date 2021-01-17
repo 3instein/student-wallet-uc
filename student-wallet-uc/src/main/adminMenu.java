@@ -269,7 +269,7 @@ public class adminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_view_historyActionPerformed
 
     private void view_financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_financeActionPerformed
-        new view_finance(user_id).setVisible(true);
+        new view_finance().setVisible(true);
         dispose();
     }//GEN-LAST:event_view_financeActionPerformed
 
