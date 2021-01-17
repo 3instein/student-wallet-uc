@@ -161,6 +161,7 @@ public class auth extends javax.swing.JFrame {
         jPanel3.setBounds(0, 0, 630, 420);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
