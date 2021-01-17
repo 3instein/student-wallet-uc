@@ -62,9 +62,11 @@ public class view_history extends javax.swing.JFrame {
         back1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
         jPanel4.setBackground(new java.awt.Color(251, 211, 176));
+        jPanel4.setLayout(null);
 
         display.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,6 +80,9 @@ public class view_history extends javax.swing.JFrame {
     );
     jScrollPane3.setViewportView(display);
 
+    jPanel4.add(jScrollPane3);
+    jScrollPane3.setBounds(10, 11, 749, 159);
+
     previous.setBackground(new java.awt.Color(64, 191, 64));
     previous.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     previous.setText("Previous Page");
@@ -87,6 +92,8 @@ public class view_history extends javax.swing.JFrame {
             previousActionPerformed(evt);
         }
     });
+    jPanel4.add(previous);
+    previous.setBounds(60, 250, 120, 35);
 
     next.setBackground(new java.awt.Color(64, 191, 64));
     next.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -97,6 +104,8 @@ public class view_history extends javax.swing.JFrame {
             nextActionPerformed(evt);
         }
     });
+    jPanel4.add(next);
+    next.setBounds(600, 250, 119, 35);
 
     student_number.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,8 +117,13 @@ public class view_history extends javax.swing.JFrame {
             student_numberKeyPressed(evt);
         }
     });
+    jPanel4.add(student_number);
+    student_number.setBounds(330, 210, 135, 35);
 
+    jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     jLabel2.setText("Student Number");
+    jPanel4.add(jLabel2);
+    jLabel2.setBounds(340, 190, 130, 15);
 
     search.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,68 +135,16 @@ public class view_history extends javax.swing.JFrame {
             searchKeyPressed(evt);
         }
     });
+    jPanel4.add(search);
+    search.setBounds(330, 310, 135, 35);
 
+    jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     jLabel3.setText("Search by Date ( ex : Apr 1 )");
-
-    javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-    jPanel4.setLayout(jPanel4Layout);
-    jPanel4Layout.setHorizontalGroup(
-        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel4Layout.createSequentialGroup()
-            .addGap(85, 85, 85)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(122, 122, 122)
-                    .addComponent(student_number, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(85, 85, 85))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(17, 17, 17))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addComponent(jLabel2)
-                    .addGap(334, 334, 334))))
-        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(316, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(300, 300, 300)))
-    );
-    jPanel4Layout.setVerticalGroup(
-        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel4Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(student_number, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(40, 40, 40))
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(99, 99, 99)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(18, Short.MAX_VALUE))
-        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(55, 55, 55)))
-    );
+    jPanel4.add(jLabel3);
+    jLabel3.setBounds(310, 290, 175, 15);
 
     getContentPane().add(jPanel4);
-    jPanel4.setBounds(0, 60, 770, 350);
+    jPanel4.setBounds(0, 60, 770, 370);
 
     jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 

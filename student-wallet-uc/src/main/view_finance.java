@@ -33,11 +33,14 @@ public class view_finance extends javax.swing.JFrame {
         next = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         display = new javax.swing.JTable();
-        pay = new javax.swing.JButton();
+        change = new javax.swing.JButton();
+        student_number = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(787, 452));
         getContentPane().setLayout(null);
 
         jPanel4.setBackground(new java.awt.Color(251, 211, 176));
@@ -81,33 +84,56 @@ public class view_finance extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(display);
 
-    pay.setBackground(new java.awt.Color(244, 129, 30));
-    pay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    pay.setText("Pay");
-    pay.setBorder(null);
-    pay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    pay.addActionListener(new java.awt.event.ActionListener() {
+    change.setBackground(new java.awt.Color(244, 129, 30));
+    change.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    change.setText("Change");
+    change.setBorder(null);
+    change.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    change.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            payActionPerformed(evt);
+            changeActionPerformed(evt);
         }
     });
+
+    student_number.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            student_numberActionPerformed(evt);
+        }
+    });
+    student_number.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            student_numberKeyPressed(evt);
+        }
+    });
+
+    jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    jLabel2.setText("Student Number");
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
     jPanel4Layout.setHorizontalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel4Layout.createSequentialGroup()
-            .addGap(75, 75, 75)
-            .addComponent(previous)
-            .addGap(178, 178, 178)
-            .addComponent(pay, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(next)
-            .addGap(68, 68, 68))
-        .addGroup(jPanel4Layout.createSequentialGroup()
             .addGap(20, 20, 20)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(21, Short.MAX_VALUE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGap(75, 75, 75)
+            .addComponent(previous)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(145, 145, 145)
+                    .addComponent(student_number, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(169, 169, 169)
+                    .addComponent(change, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(next)
+            .addGap(75, 75, 75))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGap(352, 352, 352)
+            .addComponent(jLabel2)
+            .addGap(341, 341, 341))
     );
     jPanel4Layout.setVerticalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +147,13 @@ public class view_finance extends javax.swing.JFrame {
                         .addComponent(previous, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(pay, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(47, Short.MAX_VALUE))
+                    .addGap(10, 10, 10)
+                    .addComponent(jLabel2)
+                    .addGap(4, 4, 4)
+                    .addComponent(student_number, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)
+                    .addComponent(change, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(13, Short.MAX_VALUE))
     );
 
     getContentPane().add(jPanel4);
@@ -248,7 +278,7 @@ public class view_finance extends javax.swing.JFrame {
 //        status = (String) display.getValueAt(selected, 3);
     }//GEN-LAST:event_displayMouseClicked
 
-    private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
+    private void changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeActionPerformed
 //        if(selected == -1){
 //            JOptionPane.showMessageDialog(this, "Select a payment first!");
 //            return;
@@ -305,12 +335,64 @@ public class view_finance extends javax.swing.JFrame {
 //        } catch(Exception e){
 //            JOptionPane.showMessageDialog(this, e.getMessage());
 //        }
-    }//GEN-LAST:event_payActionPerformed
+    }//GEN-LAST:event_changeActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         new MainMenu(user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
+
+    private void student_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_student_numberActionPerformed
+
+    private void student_numberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_student_numberKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            init();
+            String target = student_number.getText();
+            if(target.isBlank()){
+                JOptionPane.showMessageDialog(this, "Student number must be filled");
+                return;
+            }
+            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+            formatRp.setCurrencySymbol("Rp. ");
+            formatRp.setMonetaryDecimalSeparator(',');
+            formatRp.setGroupingSeparator('.');
+
+            rp.setDecimalFormatSymbols(formatRp);
+
+            sql = "SELECT user_id FROM user WHERE nim='" + target + "';";
+            try{
+                rs = stmt.executeQuery(sql);
+                if(rs.next()){
+                    user_id = rs.getInt("user_id");
+                } else {
+                    JOptionPane.showMessageDialog(this, "There is no user associated with student number " + target);
+                    return;
+                }
+                sql = "SELECT * FROM history WHERE user_id=" + user_id + " ORDER BY transaction_id DESC LIMIT 10;";
+                rs = stmt.executeQuery(sql);
+                while (rs.next()) {
+                    int transaction_id = rs.getInt("transaction_id");
+                    String type = rs.getString("type");
+                    int amount = rs.getInt("amount");
+                    String date = rs.getString("date");
+                    model.addRow(new Object[]{transaction_id, type, rp.format(amount), date});
+                }
+                sql = "SELECT count(*) FROM history WHERE user_id=" + user_id + ";";
+                rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    totalpage = rs.getInt("count(*)");
+                    totalpage = (float) Math.ceil(totalpage / 10) - 1;
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+
+        }
+    }//GEN-LAST:event_student_numberKeyPressed
 
     /**
      * @param args the command line arguments
@@ -349,12 +431,14 @@ public class view_finance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton change;
     private javax.swing.JTable display;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton next;
-    private javax.swing.JButton pay;
     private javax.swing.JButton previous;
+    private javax.swing.JTextField student_number;
     // End of variables declaration//GEN-END:variables
 }
