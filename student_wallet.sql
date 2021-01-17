@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2020 at 02:52 AM
+-- Generation Time: Jan 17, 2021 at 03:18 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -67,7 +67,17 @@ INSERT INTO `history` (`transaction_id`, `user_id`, `type`, `amount`, `date`) VA
 (27, 1, 'Deposit', 1700000, 'Sun Nov 29 15:54:26 WIB 2020'),
 (28, 1, 'Payment', 1700000, 'Sun Nov 29 15:58:18 WIB 2020'),
 (29, 1, 'Deposit', 1700000, 'Sun Nov 29 16:03:44 WIB 2020'),
-(30, 1, 'Payment', 1700000, 'Sun Nov 29 16:03:47 WIB 2020');
+(30, 1, 'Payment', 1700000, 'Sun Nov 29 16:03:47 WIB 2020'),
+(31, 1, 'Deposit', 10000000, 'Thu Dec 03 09:36:49 WIB 2020'),
+(32, 1, 'Payment', 1700000, 'Thu Dec 03 09:39:08 WIB 2020'),
+(33, 1, 'Deposit', 400000, 'Mon Jan 11 09:09:21 WIB 2021'),
+(34, 1, 'Withdraw', 1000000, 'Mon Jan 11 09:09:32 WIB 2021'),
+(35, 1, 'Outgoing Transfer', 1000000, 'Mon Jan 11 09:09:50 WIB 2021'),
+(36, 2, 'Incoming Transfer', 1000000, 'Mon Jan 11 09:09:50 WIB 2021'),
+(37, 1, 'Payment', 1700000, 'Mon Jan 11 09:11:02 WIB 2021'),
+(38, 1, 'Deposit', 100000000, 'Fri Jan 15 16:20:00 WIB 2021'),
+(39, 1, 'Withdraw', 50000000, 'Fri Jan 15 16:20:21 WIB 2021'),
+(40, 1, 'Payment', 1700000, 'Fri Jan 15 16:21:27 WIB 2021');
 
 -- --------------------------------------------------------
 
@@ -88,7 +98,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `user_id`, `amount`, `date`, `status`) VALUES
-(1, 1, 1700000, '24-11-2020', 'Paid');
+(1, 1, 1700000, '24-11-2020', 'Paid'),
+(2, 1, 4000000, '24-11-2020', 'Unpaid'),
+(3, 1, 1000000, '24-03-2021', 'Unpaid');
 
 -- --------------------------------------------------------
 
@@ -111,8 +123,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `nim`, `username`, `password`, `balance`, `full_name`, `status`) VALUES
-(1, '0706012010011', 'rkindarto', 'root', 1300000, 'Reynaldi Kindarto', 1),
-(2, '0706012010021', 'eco123', '12345', 11100000, 'Michael Eco', 1);
+(0, '', 'admin', 'root', 1, '', 1),
+(1, '0706012010011', 'rkindarto', 'root', 5000000, 'Reynaldi Kindarto', 1),
+(2, '0706012010021', 'eco123', '12345', 12100000, 'Michael Eco', 1);
 
 --
 -- Indexes for dumped tables
@@ -148,19 +161,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `transaction_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
