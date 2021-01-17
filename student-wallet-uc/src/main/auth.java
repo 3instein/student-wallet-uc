@@ -174,7 +174,7 @@ public class auth extends javax.swing.JFrame {
                     if (status == 1) {
                         int user_id = rs.getInt("user_id");
                         if (user_id == 0) {
-                            new adminMenu(user_id).setVisible(true);
+                            new adminMenu().setVisible(true);
                             dispose();
                         } else {
                             new MainMenu(user_id).setVisible(true);
@@ -202,7 +202,7 @@ public class auth extends javax.swing.JFrame {
                     if (status == 1) {
                         int user_id = rs.getInt("user_id");
                         if (user_id == 0) {
-                            new adminMenu(user_id).setVisible(true);
+                            new adminMenu().setVisible(true);
                             dispose();
                         } else {
                             new MainMenu(user_id).setVisible(true);
@@ -229,7 +229,7 @@ public class auth extends javax.swing.JFrame {
                 if (status == 1) {
                     int user_id = rs.getInt("user_id");
                     if (user_id == 0) {
-                        new adminMenu(user_id).setVisible(true);
+                        new adminMenu().setVisible(true);
                         dispose();
                     } else {
                         new MainMenu(user_id).setVisible(true);

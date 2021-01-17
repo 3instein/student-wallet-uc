@@ -23,8 +23,7 @@ public class adminMenu extends javax.swing.JFrame {
     /**
      * Creates new form adminMenu
      */
-    public adminMenu(int user_id) {
-        this.user_id = user_id;
+    public adminMenu() {
         initComponents();
         
         updateTimer = new Timer(DELAY, new ActionListener() {
@@ -250,22 +249,22 @@ public class adminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void change_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_balanceActionPerformed
-        new change_balance(user_id).setVisible(true);
+        new change_balance().setVisible(true);
         dispose();
     }//GEN-LAST:event_change_balanceActionPerformed
 
     private void change_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_statusActionPerformed
-        new change_status(user_id).setVisible(true);
+        new change_status().setVisible(true);
         dispose();
     }//GEN-LAST:event_change_statusActionPerformed
 
     private void change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_passwordActionPerformed
-        new change_password(user_id).setVisible(true);
+        new change_password().setVisible(true);
         dispose();
     }//GEN-LAST:event_change_passwordActionPerformed
 
     private void view_historyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_historyActionPerformed
-        new view_history(user_id).setVisible(true);
+        new view_history().setVisible(true);
         dispose();
     }//GEN-LAST:event_view_historyActionPerformed
 

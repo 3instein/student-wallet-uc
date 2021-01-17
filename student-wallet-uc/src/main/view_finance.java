@@ -168,143 +168,143 @@ public class view_finance extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
-        init();
-        if(page == 0){
-            JOptionPane.showMessageDialog(this, "This is the first page!");
-            return;
-        } else {
-            for(int i = display.getRowCount() - 1; i >= 0; i--){
-                model.removeRow(i);
-            }
-            page--;
-        }
-        offset = page * 10;
-
-        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
-        try{
-            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-            formatRp.setCurrencySymbol("Rp. ");
-            formatRp.setMonetaryDecimalSeparator(',');
-            formatRp.setGroupingSeparator('.');
-
-            rp.setDecimalFormatSymbols(formatRp);
-
-            rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                int payment_id = rs.getInt("payment_id");
-                int amount = rs.getInt("amount");
-                String date = rs.getString("date");
-                String status = rs.getString("status");
-                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
-            }
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+//        init();
+//        if(page == 0){
+//            JOptionPane.showMessageDialog(this, "This is the first page!");
+//            return;
+//        } else {
+//            for(int i = display.getRowCount() - 1; i >= 0; i--){
+//                model.removeRow(i);
+//            }
+//            page--;
+//        }
+//        offset = page * 10;
+//
+//        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
+//        try{
+//            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+//            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+//
+//            formatRp.setCurrencySymbol("Rp. ");
+//            formatRp.setMonetaryDecimalSeparator(',');
+//            formatRp.setGroupingSeparator('.');
+//
+//            rp.setDecimalFormatSymbols(formatRp);
+//
+//            rs = stmt.executeQuery(sql);
+//            while(rs.next()){
+//                int payment_id = rs.getInt("payment_id");
+//                int amount = rs.getInt("amount");
+//                String date = rs.getString("date");
+//                String status = rs.getString("status");
+//                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
+//            }
+//        } catch(Exception e){
+//            JOptionPane.showMessageDialog(this, e.getMessage());
+//        }
     }//GEN-LAST:event_previousActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        init();
-
-        if(page < totalpage){
-            page++;
-            for(int i = display.getRowCount() - 1; i >= 0; i--){
-                model.removeRow(i);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "This is the last page!");
-            return;
-        }
-        offset = page * 10;
-
-        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
-        try{
-            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-            formatRp.setCurrencySymbol("Rp. ");
-            formatRp.setMonetaryDecimalSeparator(',');
-            formatRp.setGroupingSeparator('.');
-
-            rp.setDecimalFormatSymbols(formatRp);
-
-            rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                payment_id = rs.getInt("payment_id");
-                amount = rs.getInt("amount");
-                String date = rs.getString("date");
-                String status = rs.getString("status");
-                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
-            }
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+//        init();
+//
+//        if(page < totalpage){
+//            page++;
+//            for(int i = display.getRowCount() - 1; i >= 0; i--){
+//                model.removeRow(i);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "This is the last page!");
+//            return;
+//        }
+//        offset = page * 10;
+//
+//        sql = "SELECT * FROM payment WHERE user_id=" + user_id + " ORDER BY payment_id DESC LIMIT 10 OFFSET " + offset + ";";
+//        try{
+//            DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+//            DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+//
+//            formatRp.setCurrencySymbol("Rp. ");
+//            formatRp.setMonetaryDecimalSeparator(',');
+//            formatRp.setGroupingSeparator('.');
+//
+//            rp.setDecimalFormatSymbols(formatRp);
+//
+//            rs = stmt.executeQuery(sql);
+//            while(rs.next()){
+//                payment_id = rs.getInt("payment_id");
+//                amount = rs.getInt("amount");
+//                String date = rs.getString("date");
+//                String status = rs.getString("status");
+//                model.addRow(new Object[]{payment_id, rp.format(amount), date, status});
+//            }
+//        } catch(Exception e){
+//            JOptionPane.showMessageDialog(this, e.getMessage());
+//        }
     }//GEN-LAST:event_nextActionPerformed
 
     private void displayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayMouseClicked
-        selected = display.getSelectedRow();
-        payment_id = (int) display.getValueAt(selected, 0);
-        status = (String) display.getValueAt(selected, 3);
+//        selected = display.getSelectedRow();
+//        payment_id = (int) display.getValueAt(selected, 0);
+//        status = (String) display.getValueAt(selected, 3);
     }//GEN-LAST:event_displayMouseClicked
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
-        if(selected == -1){
-            JOptionPane.showMessageDialog(this, "Select a payment first!");
-            return;
-        }
-        sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
-        try{
-            rs = stmt.executeQuery(sql);
-            if(rs.next()){
-                balance = rs.getInt("balance");
-            }
-            sql = "SELECT amount FROM payment WHERE payment_id=" + payment_id + ";";
-            rs = stmt.executeQuery(sql);
-            if(rs.next()){
-                amount = rs.getInt("amount");
-            }
-            if(amount < balance && status.equals("Unpaid")){
-                sql = "SELECT status FROM payment WHERE payment_id=" + payment_id + ";";
-                rs = stmt.executeQuery(sql);
-                if(rs.next()){
-                    status = rs.getString("status");
-                    if(status.equals("Unpaid")){
-
-                        DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-                        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
-
-                        formatRp.setCurrencySymbol("Rp. ");
-                        formatRp.setMonetaryDecimalSeparator(',');
-                        formatRp.setGroupingSeparator('.');
-
-                        rp.setDecimalFormatSymbols(formatRp);
-
-                        sql = "UPDATE payment SET status='Paid' WHERE payment_id=" + payment_id + ";";
-                        stmt.execute(sql);
-                        balance -= amount;
-                        sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
-                        stmt.execute(sql);
-                        java.util.Date date = java.util.Calendar.getInstance().getTime();
-                        sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Payment', " + amount + ", '" + date + "');";
-                        stmt.execute(sql);
-                        JOptionPane.showMessageDialog(this, "Payment Successful! Payment ID: #" + payment_id + "\n" + rp.format(amount) + "\n" + date);
-                        model.setValueAt("Paid", selected, 3);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "This payment is already paid!");
-                        return;
-                    }
-                }
-            } else if(status.equals("Paid")){
-                JOptionPane.showMessageDialog(this, "This payment is already paid!");
-                return;
-            } else {
-                JOptionPane.showMessageDialog(this, "Your balance is not enough!");
-                return;
-            }
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+//        if(selected == -1){
+//            JOptionPane.showMessageDialog(this, "Select a payment first!");
+//            return;
+//        }
+//        sql = "SELECT balance FROM user WHERE user_id=" + user_id + ";";
+//        try{
+//            rs = stmt.executeQuery(sql);
+//            if(rs.next()){
+//                balance = rs.getInt("balance");
+//            }
+//            sql = "SELECT amount FROM payment WHERE payment_id=" + payment_id + ";";
+//            rs = stmt.executeQuery(sql);
+//            if(rs.next()){
+//                amount = rs.getInt("amount");
+//            }
+//            if(amount < balance && status.equals("Unpaid")){
+//                sql = "SELECT status FROM payment WHERE payment_id=" + payment_id + ";";
+//                rs = stmt.executeQuery(sql);
+//                if(rs.next()){
+//                    status = rs.getString("status");
+//                    if(status.equals("Unpaid")){
+//
+//                        DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+//                        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+//
+//                        formatRp.setCurrencySymbol("Rp. ");
+//                        formatRp.setMonetaryDecimalSeparator(',');
+//                        formatRp.setGroupingSeparator('.');
+//
+//                        rp.setDecimalFormatSymbols(formatRp);
+//
+//                        sql = "UPDATE payment SET status='Paid' WHERE payment_id=" + payment_id + ";";
+//                        stmt.execute(sql);
+//                        balance -= amount;
+//                        sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
+//                        stmt.execute(sql);
+//                        java.util.Date date = java.util.Calendar.getInstance().getTime();
+//                        sql = "INSERT INTO history (user_id, type, amount, date) VALUE(" + user_id + ", 'Payment', " + amount + ", '" + date + "');";
+//                        stmt.execute(sql);
+//                        JOptionPane.showMessageDialog(this, "Payment Successful! Payment ID: #" + payment_id + "\n" + rp.format(amount) + "\n" + date);
+//                        model.setValueAt("Paid", selected, 3);
+//                    } else {
+//                        JOptionPane.showMessageDialog(this, "This payment is already paid!");
+//                        return;
+//                    }
+//                }
+//            } else if(status.equals("Paid")){
+//                JOptionPane.showMessageDialog(this, "This payment is already paid!");
+//                return;
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Your balance is not enough!");
+//                return;
+//            }
+//        } catch(Exception e){
+//            JOptionPane.showMessageDialog(this, e.getMessage());
+//        }
     }//GEN-LAST:event_payActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

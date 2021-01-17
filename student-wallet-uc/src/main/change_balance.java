@@ -17,7 +17,6 @@ import java.text.DecimalFormatSymbols;
  * @author reyna
  */
 public class change_balance extends javax.swing.JFrame {
-    int user_id;
     Connection conn;
     Statement stmt;
     ResultSet rs;
@@ -25,8 +24,7 @@ public class change_balance extends javax.swing.JFrame {
     /**
      * Creates new form change_balance
      */
-    public change_balance(int user_id) {
-        this.user_id = user_id;
+    public change_balance() {
         initComponents();
         connection DB = new connection();
         DB.config();
@@ -182,7 +180,7 @@ public class change_balance extends javax.swing.JFrame {
     }//GEN-LAST:event_submit_balanceActionPerformed
 
     private void back_balanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_balanceActionPerformed
-        new adminMenu(user_id).setVisible(true);
+        new adminMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_back_balanceActionPerformed
 
