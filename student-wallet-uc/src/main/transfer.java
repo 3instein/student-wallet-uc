@@ -323,7 +323,7 @@ public class transfer extends javax.swing.JFrame {
                             }
                             balance_target = balance_target + amount;
                             sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
-                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim=" + target + ";";
+                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim='" + target + "';";
                             stmt.execute(sql);
                             stmt.execute(sql_target);
                             DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
@@ -392,7 +392,7 @@ public class transfer extends javax.swing.JFrame {
                             }
                             balance_target = balance_target + amount;
                             sql = "UPDATE user SET balance=" + balance + " WHERE user_id=" + user_id + ";";
-                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim=" + target + ";";
+                            sql_target = "UPDATE user SET balance=" + balance_target + " WHERE nim='" + target + "';";
                             stmt.execute(sql);
                             stmt.execute(sql_target);
                             DecimalFormat rp = (DecimalFormat) DecimalFormat.getCurrencyInstance();
